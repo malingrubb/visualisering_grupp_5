@@ -1,0 +1,54 @@
+:root {
+    /* Färgpalett */
+    --forest: #003300;
+    --fog: #99cfab;
+    --breeze: #d1f7e5;
+    --night_black: #000000;
+    --light_the_way: #33ff99; 
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "IBM Plex Sans", serif;
+    color: var(--night_black);
+}
+
+.container{
+    width: 50%;
+    border: 1px solid blue;
+}
+
+.background-color {
+    background-color: var(--breeze);
+}
+
+.headline-text {
+    /* 150px/155px */
+    font-size: 9.375rem;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.introduction-text {
+    /* font-size: 39px; */
+    font-size: 2.438rem;
+    font-weight: 100;
+}
+
+.info-text {
+    /* font-size: 26px; */
+    font-size: 1.625rem;
+    font-weight: 600;
+}
+
+.body-text {
+    /* font-size: 29px; */
+    font-size: 1.813rem;
+    font-weight: 400;
+}
