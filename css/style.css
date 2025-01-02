@@ -89,3 +89,23 @@ border: 1px solid blue;
 
 
   
+.visual_2 {
+    /* border: 1px solid red; */
+    background-color: var(--forest);
+}
+
+.text-container {
+    display: flex;
+    flex-direction: row;
+    
+}
+.text-box {
+    width: 30rem;
+    color:var(--breeze);
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+.visual_1 {
+    border: 1px solid yellowgreen;
+}

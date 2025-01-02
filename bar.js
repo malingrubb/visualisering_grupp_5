@@ -1,6 +1,5 @@
 
 // URL SCB Skogsmark produktiv 211
-// URL SCB Skogsmark produktiv 211
 const urlSkogsSverige2 = "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN"
 
 const querySkogsSverige2 = {
