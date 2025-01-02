@@ -1,130 +1,78 @@
-// url SCB amount of forest in sweden
-const urlForestSweden = "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN";
+// Visual_1
 
-const queryForestSweden = {
-    "query": [
-      {
-        "code": "Region",
-        "selection": {
-          "filter": "vs:RegionRiket99",
-          "values": [
-            "00"
-          ]
-        }
-      },
-      {
-        "code": "Markanvandningsklass",
-        "selection": {
-          "filter": "item",
-          "values": [
-            "213",
-            "911"
-          ]
-        }
-      },
-      {
-        "code": "Tid",
-        "selection": {
-          "filter": "item",
-          "values": [
-            "2020"
-          ]
-        }
-      }
-    ],
-    "response": {
-      "format": "json"
+function colorSwedenMap(containerId, forestHeightRatio, legendData) {
+  d3.xml("./svg/sweden.svg").then(svg => {
+    const svgNode = svg.documentElement;
+    const container = d3.select(containerId);
+
+    if (container.empty()) {
+      console.error(`Container ${containerId} not found`);
+      return;
     }
-  };
 
-  const request_visual_1 = new Request(urlForestSweden, {
-    method: 'POST',
-    body: JSON.stringify(queryForestSweden),
+    container.node().append(svgNode);
+
+    const svgHeight = 1052.3622; // Höjden på SVG:n
+    const forestHeight = svgHeight * forestHeightRatio;
+    const otherHeight = svgHeight - forestHeight;
+
+    // Skapa en gradient
+    const defs = d3.select(svgNode).append("defs");
+
+    const gradient = defs.append("linearGradient")
+      .attr("id", `gradient-${containerId}`)
+      .attr("x1", "0%")
+      .attr("y1", "0%")
+      .attr("x2", "0%")
+      .attr("y2", "100%");
+
+    gradient.append("stop")
+      .attr("offset", `${forestHeight / svgHeight * 100}%`)
+      .attr("stop-color", "#99cfab"); // Färg för 32% av höjden
+
+    gradient.append("stop")
+      .attr("offset", `${forestHeight / svgHeight * 100}%`)
+      .attr("stop-color", "#003300"); // Färg för 68% av höjden
+
+    d3.select(svgNode).selectAll("path")
+      .attr("fill", `url(#gradient-${containerId})`);
+
+    createLegend(containerId, legendData);
   });
-  
-  fetch(request_visual_1)
-    .then(response => response.json())
-    .then(data => {
-      // Extract the year value for the title
-       // Extract the year value for the title
-    let year = queryForestSweden.query.find(q => q.code === "Tid").selection.values[0];
-    
-    // Change the title of the year variable
-    if (year === "2020") {
-      year = "Year 2020";
-    }
-      const keyTitleMapping = {
-        "213": "Total skogsmark",
-        "911": "Total landareal" 
-      };
+}
 
-      console.log("Visual 1: Forest Sweden",data);
-  
-      // Process the data to fit the pie chart format
-      const processedData = data.data
-        .filter(item => item.key[1] === "213" || item.key[1] === "911")
-        .map(item => ({
-            label: keyTitleMapping[item.key[1]], 
-          value: item.values[0] 
-        }));
-  
-      // Set the dimensions and margins of the graph
-      const width = 450;
-      const height = 450;
-      const margin = 40;
-  
-      // The radius of the pie chart is half the smallest side
-      const radius = Math.min(width, height) / 2 - margin;
-  
-      // Append the svg object to the body of the page
-      const svg = d3.select(".visual_1")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", `translate(${width / 2}, ${height / 2})`);
-  
-      // Add the title
-      svg.append("text")
-        .attr("x", 0)
-        .attr("y", -height / 2 + margin)
-        .attr("text-anchor", "middle")
-        .style("font-size", "24px")
-        .text(`Forest Data for Year ${year}`);
-  
-      // Create the pie chart
-      const pie = d3.pie()
-        .value(d => d.value);
-  
-      const data_ready = pie(processedData);
-  
-      // Shape helper to build arcs
-      const arcGenerator = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-  
-      // Build the pie chart
-      svg
-        .selectAll('slices')
-        .data(data_ready)
-        .enter()
-        .append('path')
-        .attr('d', arcGenerator)
-        .attr('fill', (d, i) => d3.schemeCategory10[i])
-        .attr("stroke", "black")
-        .style("stroke-width", "2px")
-        .style("opacity", 0.7);
-  
-      // Add labels
-      svg
-        .selectAll('slices')
-        .data(data_ready)
-        .enter()
-        .append('text')
-        .text(d => d.data.label)
-        .attr("transform", d => `translate(${arcGenerator.centroid(d)})`)
-        .style("text-anchor", "middle")
-        .style("font-size", 15);
-    })
-    .catch(error => console.error('Error fetching data:', error));
-  
+function createLegend(containerId, legendData) {
+  const container = d3.select(containerId).append("div").attr("class", "legend");
+
+  legendData.forEach(d => {
+    const legendItem = container.append("div").attr("class", "legend-item");
+    legendItem.append("span")
+      .attr("class", "legend-color")
+      .style("background-color", d.color);
+    legendItem.append("span")
+      .attr("class", "legend-text")
+      .text(d.name);
+  });
+}
+
+// Define legend data for each map
+const legendData1 = [
+  { name: "Skogsmark", color: "#003300" },
+  { name: "Övrig mark", color: "#99cfab" }
+];
+
+const legendData2 = [
+  { name: "Produktiv skog", color: "#003300" },
+  { name: "Övrig mark", color: "#99cfab" }
+];
+
+const legendData3 = [
+  { name: "Oproduktiv skog", color: "#003300" },
+  { name: "Övrig mark", color: "#99cfab" }
+];
+
+
+// Create three maps with different forest height ratios
+colorSwedenMap(".map1", 0.32, legendData1); // Original ratio
+colorSwedenMap(".map2", 0.42, legendData2); // 50% forest height
+colorSwedenMap(".map3", 0.89, legendData3); // 70% forest height

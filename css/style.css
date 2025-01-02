@@ -20,10 +20,8 @@ body {
 }
 
 .container {
+    margin: 2rem;
     width: 80%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 
@@ -66,46 +64,50 @@ body {
     font-weight: 400;
 }
 
-  
-
-/* TESTI */
-/* 
-.county {
-    fill: #f0f9e8;
-    stroke: #7bccc4;
-    stroke-width: 0.5;
-  } */
-
-.bar-chart {
-margin-top: 2rem;
-margin-left: 2rem;
-border: 1px solid blue;
+.font-color--dark {
+    color: var(--forest);
 }
 
-.bar-chart-2 {
-    margin-top: 2rem;
-    border: 1px solid pink;
-    }
 
-
-  
-.visual_2 {
-    /* border: 1px solid red; */
-    background-color: var(--forest);
-}
-
-.text-container {
+.visual-container {
     display: flex;
     flex-direction: row;
-    
 }
+
 .text-box {
     width: 30rem;
-    color:var(--breeze);
+    color:var(--forest);
     border-radius: 1rem;
     padding: 3rem;
 }
 
 .visual_1 {
-    border: 1px solid yellowgreen;
-}
+    width: 33%;
+  }
+
+  .legend {
+    margin-left: 20px; 
+  }
+  
+  .legend-item {
+    /* display: flex; */
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: .4rem;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  
+  .legend-text {
+    font-size: 14px;
+  }
+
+  .visual_2 {
+    width: 33%;
+  }
