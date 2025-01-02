@@ -19,13 +19,26 @@ body {
     color: var(--night_black);
 }
 
-.container{
-    width: 50%;
-    border: 1px solid blue;
+.container {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .background-color {
     background-color: var(--breeze);
+}
+
+.hero-img {
+    background-image: url("../img/svepreg_img_1.png");
+    object-fit: contain;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50rem;
 }
 
 .headline-text {
@@ -52,3 +65,27 @@ body {
     font-size: 1.813rem;
     font-weight: 400;
 }
+
+  
+
+/* TESTI */
+/* 
+.county {
+    fill: #f0f9e8;
+    stroke: #7bccc4;
+    stroke-width: 0.5;
+  } */
+
+.bar-chart {
+margin-top: 2rem;
+margin-left: 2rem;
+border: 1px solid blue;
+}
+
+.bar-chart-2 {
+    margin-top: 2rem;
+    border: 1px solid pink;
+    }
+
+
+  
