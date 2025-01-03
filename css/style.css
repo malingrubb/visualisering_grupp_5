@@ -23,6 +23,10 @@ a {
   color: var(--forest);
 }
 
+a:hover {
+  color: var(--night_black);
+}
+
 .container {
   margin: 2rem;
   width: 80%;
@@ -72,19 +76,22 @@ a {
 }
 
 .visual-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+}
+
+.visual-container h4 {
+  grid-column: 1 / -1;
 }
 
 .text-box {
-  width: 30rem;
   color: var(--forest);
   border-radius: 1rem;
   padding: 3rem;
 }
 
 .visual_1 {
-  width: 33%;
+  width: 60%;
 }
 
 .legend {
