@@ -64,7 +64,7 @@
 // const height2 = 500 - margin2.top - margin2.bottom;
 
 // // Skapa SVG
-// const svg2 = d3.select(".bar-chart-2").append("svg")
+// const svg2 = d3.select("body").append("svg")
 //     .attr("width", width2 + margin2.left + margin2.right)
 //     .attr("height", height2 + margin2.top + margin2.bottom)
 //   .append("g")

@@ -1,5 +1,5 @@
 
-// URL SCB Skogsmark
+// // URL SCB Skogsmark
 // const urlSkogsSverige = "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN"
 
 // const querySkogsSverige = {
@@ -46,7 +46,7 @@
   
 
  
-  // TESTI TESTII
+//   TESTI TESTII
 // const width = 800;
 // const height = 600;
 
