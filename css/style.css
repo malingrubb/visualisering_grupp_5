@@ -91,7 +91,7 @@ a:hover {
 }
 
 .visual_1 {
-  width: 60%;
+
 }
 
 .legend {
@@ -117,5 +117,10 @@ a:hover {
 }
 
 .visual_2 {
-  width: 33%;
+
+width: 100%;
+}
+
+.visual_3 {
+  border: 1px solid blue;
 }
