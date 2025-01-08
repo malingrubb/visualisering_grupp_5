@@ -90,8 +90,8 @@ a:hover {
   padding: 3rem;
 }
 
-.visual_1 {
-
+.comments-container {
+  width: 80%;
 }
 
 .legend {
@@ -99,7 +99,6 @@ a:hover {
 }
 
 .legend-item {
-  /* display: flex; */
   align-items: center;
   margin-bottom: 5px;
 }
@@ -117,10 +116,6 @@ a:hover {
 }
 
 .visual_2 {
-
 width: 100%;
 }
 
-.visual_3 {
-  border: 1px solid blue;
-}

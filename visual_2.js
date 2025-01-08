@@ -1,6 +1,4 @@
-// Visual 2: Timber truck svg
-
- // Visual 2: Stacked bar chart
+// Visual 2: Stacked bar chart
  const urlSkogsSverige2 = "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN";
 
  const querySkogsSverige2 = {
@@ -19,7 +17,6 @@
         "selection": {
           "filter": "item",
           "values": [
-            "16",
             "211",
             "212"
           ]
@@ -59,7 +56,7 @@
  
    function processData(rawData) {
     const years = [...new Set(rawData.map(d => d.key[2]))];
-    const classes = ["16", "211", "212"];
+    const classes = ["211", "212"];
     const data = years.map(year => {
       const yearData = { year };
       classes.forEach(cls => {
@@ -87,7 +84,7 @@
         .attr("y", 0 - margin.top / 2)
         .attr("text-anchor", "middle")
         .style("font-size", "32px")
-        .text("Jordbruksmark och skogsmark i Sverige");
+        .text("Skogsmark i Sverige");
 
     const x = d3.scaleBand()
         .domain(data.map(d => d.year))
@@ -95,16 +92,16 @@
         .padding(0.1);
 
     const y = d3.scaleLinear()
-        .domain([0, 40000000])
+        .domain([0, 41000000])
         .nice()
         .range([height, 0]);
 
     const color = d3.scaleOrdinal()
-        .domain(["16", "211", "212"])
-        .range(["#99cfab", "#003300", "#009E73"]);
+        .domain(["211", "212"])
+        .range(["#003300", "#99cfab"]);
 
     const stack = d3.stack()
-        .keys(["16", "211", "212"]);
+        .keys(["211", "212"]);
 
     const series = stack(data);
 
@@ -145,10 +142,9 @@
 
     // Add text labels next to the bars instead of a separate legend
     const legendNames2 = {
-        "16": "Total jordbruksmark",
-        "211": "Skogsmark produktiv",
-        "212": "Skogsmark ej produktiv"
-    };
+      "211": "Skogsmark produktiv 58%",
+      "212": "Skogsmark ej produktiv 10.8%"
+  };
 
     const lastBarX = x("2020") + x.bandwidth();
 
@@ -162,15 +158,15 @@
         .style("fill", d => color(d.key)) 
         .text(d => legendNames2[d.key]); 
 
-    // Add comments below the chart
-    svg.append("g")
-    .attr("transform", `translate(0,${height + 40})`) 
-    .selectAll("text")
-    .data(comments)
-    .enter().append("text")
-    .attr("x", 0) 
-    .attr("y", (d, i) => i * 18) 
-    .attr("text-anchor", "start")
-    .style("font-size", "14px")
-    .text(d => `${legendNames2[d.value]}: ${d.comment}`);
+    // Add comments to the HTML document
+    const commentsContainer = d3.select(".comments-container");
+    comments.forEach(comment => {
+        commentsContainer.append("p")
+            .attr("class", "body-text")
+            .style("margin-bottom", "10px")
+            .text(`${legendNames2[comment.value]}: ${comment.comment}`);
+        commentsContainer.append("p")
+            .attr("class", "body-text")
+            .style("margin-bottom", "20px") // Adding more margin between different comments
+    });
 }

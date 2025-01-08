@@ -14,7 +14,7 @@ d3.dsv(";", "/csv/bankebilar2010-2023.csv").then(function(data) {
   function skapaStapeldiagram(data) {
     const bredd = 600;
     const höjd = 400;
-    const marginal = {top: 20, höger: 20, botten: 70, vänster: 40};
+    const marginal = {top: 50, höger: 20, botten: 70, vänster: 40};
   
     const svg = d3.select("div.visual_3").append("svg")
       .attr("width", bredd + marginal.vänster + marginal.höger)
@@ -40,7 +40,9 @@ d3.dsv(";", "/csv/bankebilar2010-2023.csv").then(function(data) {
       .attr("width", x.bandwidth())
       .attr("y", d => y(d["Antal timmerbilar"]))
       .attr("height", d => höjd - y(d["Antal timmerbilar"]))
-      .attr("fill", "#003300");
+      .attr("fill", "#003300")
+      // .attr("rx", 9) // Set the x-axis radius
+    .attr("ry", 9); // Set the y-axis radius;
   
     svg.append("g")
       .attr("transform", `translate(0,${höjd})`)

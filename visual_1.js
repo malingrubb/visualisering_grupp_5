@@ -1,118 +1,168 @@
-const urlSkogsSverige = "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN";
+// Line chart som vi inte vill ha med 
 
-const querySkogsSverige = {
-  "query": [
-    {
-      "code": "Region",
-      "selection": {
-        "filter": "vs:RegionRiket99",
-        "values": ["00"]
-      }
-    },
-    {
-      "code": "Tid",
-      "selection": {
-        "filter": "item",
-        "values": [
-          "1990",
-          "1995",
-          "2000",
-          "2005",
-          "2010",
-          "2015",
-          "2020"
-        ]
-      }
-    }
-  ],
-  "response": {
-    "format": "json"
-  }
-};
 
-const requestSkogsSverige = new Request(urlSkogsSverige, {
-  method: 'POST',
-  body: JSON.stringify(querySkogsSverige)
-});
+// const urlSkogsSverige = "https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN";
 
-fetch(requestSkogsSverige)
-  .then(response => response.json())
-  .then((dataSkogsSverige) => {
-    console.log("Skogsdata", dataSkogsSverige);
-    const processedData = processData1(dataSkogsSverige);
-    console.log("Processed Data", processedData);
-    createLineChart(processedData);
-  })
-  .catch(error => console.error('Error fetching data:', error));
+// const querySkogsSverige = {
+//   "query": [
+//     {
+//       "code": "Region",
+//       "selection": {
+//         "filter": "vs:RegionRiket99",
+//         "values": ["00"]
+//       }
+//     },
+//     {
+//       "code": "Tid",
+//       "selection": {
+//         "filter": "item",
+//         "values": [
+//           "1990",
+//           "1995",
+//           "2000",
+//           "2005",
+//           "2010",
+//           "2015",
+//           "2020"
+//         ]
+//       }
+//     }
+//   ],
+//   "response": {
+//     "format": "json"
+//   }
+// };
 
-// Line chart
-function processData1(data) {
-  const filteredData = [];
-  const seenYears = new Set();
+// const requestSkogsSverige = new Request(urlSkogsSverige, {
+//   method: 'POST',
+//   body: JSON.stringify(querySkogsSverige)
+// });
 
-  data.data.forEach(d => {
-    if (d.key[1] === "213") {
-      const year = +d.key[2];
-      const value = +d.values[0];
-      if (!seenYears.has(year) && value !== 0) {
-        filteredData.push({
-          year: year,
-          value: value
-        });
-        seenYears.add(year);
-      }
-    }
-  });
+// fetch(requestSkogsSverige)
+//   .then(response => response.json())
+//   .then((dataSkogsSverige) => {
+//     console.log("Skogsdata", dataSkogsSverige);
+//     const processedData = processData1(dataSkogsSverige);
+//     console.log("Processed Data", processedData);
+//     createLineChart(processedData);
+//   })
+//   .catch(error => console.error('Error fetching data:', error));
 
-  return filteredData;
-}
+// // Line chart
+// function processData1(data) {
+//   const filteredData = [];
+//   const seenYears = new Set();
 
-function createLineChart(data) {
-  const margin = { top: 20, right: 30, bottom: 30, left: 60 };
-  const width = 800 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
+//   data.data.forEach(d => {
+//     if (d.key[1] === "213") {
+//       const year = +d.key[2];
+//       const value = +d.values[0];
+//       if (!seenYears.has(year) && value !== 0) {
+//         filteredData.push({
+//           year: year,
+//           value: value
+//         });
+//         seenYears.add(year);
+//       }
+//     }
+//   });
 
-  const svg = d3.select("div.visual_1").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+//   return filteredData;
+// }
 
-  console.log("Data for line chart:", data);
+// function createLineChart(data) {
+//   const margin = { top: 20, right: 30, bottom: 30, left: 60 };
+//   const width = 800 - margin.left - margin.right;
+//   const height = 400 - margin.top - margin.bottom;
 
-  const x = d3.scalePoint()
-    .domain(data.map(d => d.year))
-    .range([0, width]);
+//   const svg = d3.select("div.visual_1").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//     .append("g")
+//     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const y = d3.scaleLinear()
-    .domain([20000000, d3.max(data, d => d.value)]) // Ändra vart y-axeln börjar
-    .range([height, 0]);
+//   console.log("Data for line chart:", data);
 
-  const line = d3.line()
-    .x(d => x(d.year))
-    .y(d => y(d.value));
+//   const x = d3.scalePoint()
+//     .domain(data.map(d => d.year))
+//     .range([0, width]);
 
-  svg.append("g")
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+//   const y = d3.scaleLinear()
+//     .domain([20000000, d3.max(data, d => d.value) * 1.2]) // Ändra vart y-axeln börjar
+//     .range([height, 0]);
 
-  svg.append("g")
-    .call(d3.axisLeft(y).tickFormat(d => `${(d / 1000000).toFixed(1)}`)); // Anpassad formattering för y-axeln
+//   const line = d3.line()
+//     .x(d => x(d.year))
+//     .y(d => y(d.value));
 
-  // Lägg till etikett för y-axeln
-  svg.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
-    .attr("x", 0 - (height / 2))
-    .attr("dy", "1em")
-    .style("text-anchor", "middle")
-    .text("Hektar, miljoner");
+//   svg.append("g")
+//     .attr("transform", `translate(0,${height})`)
+//     .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-  svg.append("path")
-    .datum(data)
-    .attr("fill", "none")
-    .attr("stroke", "#003300")
-    .attr("stroke-width", 4)
-    .attr("stroke-linecap", "round")
-    .attr("d", line);
-}
+//   svg.append("g")
+//     .call(d3.axisLeft(y)
+//     .ticks(5)
+//     .tickFormat(d => `${(d / 1000000).toFixed(1)}`)); // Anpassad formattering för y-axeln
+
+//   // Lägg till etikett för y-axeln
+//   svg.append("text")
+//     .attr("transform", "rotate(-90)")
+//     .attr("y", 0 - margin.left)
+//     .attr("x", 0 - (height / 2))
+//     .attr("dy", "1em")
+//     .style("text-anchor", "middle")
+//     .text("Miljoner hektar");
+
+//   svg.append("path")
+//     .datum(data)
+//     .attr("fill", "none")
+//     .attr("stroke", "#003300")
+//     .attr("stroke-width", 4)
+//     .attr("stroke-linecap", "round")
+//     .attr("d", line);
+// }
+
+
+const width = 500;
+const height = 500;
+const margin = 40;
+
+const radius = Math.min(width, height) / 2 - margin;
+
+const svg = d3.select("div.visual_1").append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .append("g")
+  .attr("transform", `translate(${width / 2},${height / 2})`);
+
+const data = { filled: 68, empty: 32 };
+
+const color = d3.scaleOrdinal()
+  .domain(Object.keys(data)) // Använd Object.keys för att få en array av nycklarna
+  .range(["#003300", "#d1f7e5"]);
+
+const pie = d3.pie()
+  .value(d => d[1]); // Använd värdet från nyckel-värde-paret
+
+const data_ready = pie(Object.entries(data)); // Använd Object.entries istället för d3.entries
+
+const arc = d3.arc()
+  .innerRadius(radius * 0.5)
+  .outerRadius(radius);
+
+svg.selectAll('slices')
+  .data(data_ready)
+  .enter()
+  .append('path')
+  .attr('d', arc)
+  .attr('fill', d => color(d.data[0])) // Använd nyckeln från nyckel-värde-paret
+  .attr("stroke", "#003300")
+  .style("stroke-width", "1px")
+
+// Lägg till text i mitten av cirkeldiagrammet
+svg.append("text")
+  .attr("text-anchor", "middle")
+  .attr("dy", ".35em")
+  .style("font-size", "24px")
+  // .style("font-weight", "bold")
+  .text("68%");
