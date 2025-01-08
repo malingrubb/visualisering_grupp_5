@@ -220,14 +220,13 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("stroke", "none");
 
   // Add X-axis
-  svg.append("g")
-    .attr("transform", `translate(0,${höjd})`)
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-    .style("text-anchor", "end")
-    .attr("dx", "-.8em")
-    .attr("dy", ".15em")
-    .attr("transform", "rotate(-65)");
+// Add X-axis
+svg.append("g")
+  .attr("transform", `translate(0,${höjd})`)
+  .call(d3.axisBottom(x)
+    .tickValues(x.domain().filter((d, i) => i % 3 === 0))) // Show every 5th year
+  .selectAll("text")
+  .style("text-anchor", "end");
 
   // Add Y-axis
   svg.append("g")
@@ -239,7 +238,7 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("y", 0 - (marginal.top / 2))
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
-    .text("Utsläpp av växthusgaser: Tunga lastbilar vs Totalt");
+    .text("Utsläpp av växthusgaser från vägtransporter i Sverige");
 
   // Add Y-axis label
   svg.append("text")
@@ -253,7 +252,7 @@ function createEnhancedStackedAreaPlot(data) {
   // Add Legend
   const legendData = [
     { color: "rgba(0,51,0,0.7)", label: "Tunga lastbilar" },
-    { color: "rgba(51,102,204,0.5)", label: "Totalt utsläpp" }
+    { color: "rgba(51,102,204,0.5)", label: "Totalt utsläpp från alla vägtransporter" }
   ];
 
   const legend = svg.append("g")
