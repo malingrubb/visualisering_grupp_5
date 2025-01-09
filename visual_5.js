@@ -208,7 +208,12 @@ function createEnhancedStackedAreaPlot(data) {
   const area = d3.area()
     .x(d => x(d.data.År) + x.bandwidth() / 2)  // Use the center of each band
     .y0(d => y(d[0]))  // Starting point (bottom of the area)
-    .y1(d => y(d[1]))  // Ending point (top of the area)
+    .y1(d => y(d[1]));  // Ending point (top of the area)
+
+  // Line generator function
+  const line = d3.line()
+    .x(d => x(d.data.År) + x.bandwidth() / 2)  // Use the center of each band
+    .y(d => y(d[1]));  // Ending point (top of the area)
 
   // Create the stacked areas for both "Tunga lastbilar" and "Totalt"
   svg.selectAll(".area")
@@ -219,15 +224,23 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("fill", (d, i) => i === 0 ? "rgba(0,51,0,0.7)" : "rgba(51,102,204,0.5)") // Colors with transparency
     .attr("stroke", "none");
 
+  // Add lines on top of each area
+  svg.selectAll(".line")
+    .data(stackedData)
+    .enter().append("path")
+    .attr("class", "line")
+    .attr("d", line)
+    .attr("fill", "none")
+    .attr("stroke", (d, i) => i === 0 ? "rgba(0,51,0,0.7)" : "rgba(51,102,204,0.5)")  // Line color matching area color
+    .attr("stroke-width", 1.5);  // Line width
+
   // Add X-axis
   svg.append("g")
     .attr("transform", `translate(0,${höjd})`)
-    .call(d3.axisBottom(x))
+    .call(d3.axisBottom(x)
+      .tickValues(x.domain().filter((d, i) => i % 5 === 0))) // Show every 5th year
     .selectAll("text")
-    .style("text-anchor", "end")
-    .attr("dx", "-.8em")
-    .attr("dy", ".15em")
-    .attr("transform", "rotate(-65)");
+    .style("text-anchor", "end");
 
   // Add Y-axis
   svg.append("g")
@@ -239,7 +252,7 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("y", 0 - (marginal.top / 2))
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
-    .text("Utsläpp av växthusgaser: Tunga lastbilar vs Totalt");
+    .text("Utsläpp av växthusgaser från vägtransporter i Sverige");
 
   // Add Y-axis label
   svg.append("text")
@@ -253,29 +266,29 @@ function createEnhancedStackedAreaPlot(data) {
   // Add Legend
   const legendData = [
     { color: "rgba(0,51,0,0.7)", label: "Tunga lastbilar" },
-    { color: "rgba(51,102,204,0.5)", label: "Totalt utsläpp" }
+    { color: "rgba(51,102,204,0.5)", label: "Totalt utsläpp från alla vägtransporter" }
   ];
 
   const legend = svg.append("g")
-  .attr("transform", `translate(0, -${marginal.top / 2 - 20})`); // Position it under the title
+    .attr("transform", `translate(0, -${marginal.top / 2 - 20})`); // Position it under the title
 
-legendData.forEach((item, index) => {
-  const legendItem = legend.append("g")
-    .attr("transform", `translate(${index * 150}, 0)`); // Stack legend items horizontally
+  legendData.forEach((item, index) => {
+    const legendItem = legend.append("g")
+      .attr("transform", `translate(${index * 150}, 0)`); // Stack legend items horizontally
 
-  legendItem.append("rect")
-    .attr("width", 20)
-    .attr("height", 20)
-    .attr("fill", item.color)
-    .attr("rx", 9) // Set the x-axis radius
-    .attr("ry", 9); // Set the y-axis radius
+    legendItem.append("rect")
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", item.color)
+      .attr("rx", 9) // Set the x-axis radius
+      .attr("ry", 9); // Set the y-axis radius
 
-  legendItem.append("text")
-    .attr("x", 30)
-    .attr("y", 15)
-    .style("font-size", "12px")
-    .text(item.label);
-});
+    legendItem.append("text")
+      .attr("x", 30)
+      .attr("y", 15)
+      .style("font-size", "12px")
+      .text(item.label);
+  });
 }
 
     
