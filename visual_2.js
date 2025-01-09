@@ -70,7 +70,7 @@
  
   function createStackedBarChart(data, comments) {
     const margin = { top: 80, right: 210, bottom: 120, left: 80 }; 
-    const width = 1000 - margin.left - margin.right;
+    const width = 900 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
 
     const svg = d3.select(".visual_2").append("svg")
@@ -83,7 +83,7 @@
         .attr("x", width / 2)
         .attr("y", 0 - margin.top / 2)
         .attr("text-anchor", "middle")
-        .style("font-size", "32px")
+        .style("font-size", "16px")
         .text("Skogsmark i Sverige");
 
     const x = d3.scaleBand()
