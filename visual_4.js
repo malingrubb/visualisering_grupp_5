@@ -94,32 +94,46 @@ svg2.append("g")
         .attr("stroke-width", 1.5)
         .attr("d", line2);
 
-    // Add dots for the first line
-    svg1.selectAll(".dot1")
-        .data(data)
-        .enter().append("circle")
-        .attr("class", "dot1")
-        .attr("cx", d => x(d.År))
-        .attr("cy", d => y1(d["Antal körda mil"]))
-        .attr("r", 5)
-        .attr("fill", "#003300");
+    // Highlight the year 2023 with a dot for the first line
+svg1.selectAll(".dot1")
+.data(data.filter(d => d.År === 2023))
+.enter().append("circle")
+.attr("class", "dot1")
+.attr("cx", d => x(d.År))
+.attr("cy", d => y1(d["Antal körda mil"]))
+.attr("r", 5)
+.attr("fill", "#003300");
 
-    // Add dots for the second line
-    svg2.selectAll(".dot2")
-        .data(data)
-        .enter().append("circle")
-        .attr("class", "dot2")
-        .attr("cx", d => x(d.År))
-        .attr("cy", d => y2(d["Medelkörsträcka"]))
-        .attr("r", 5)
-        .attr("fill", "#99cfab");
+svg1.selectAll(".text1")
+  .data(data.filter(d => d.År === 2023))
+  .enter().append("text")
+  .attr("class", "text1")
+  .attr("x", d => x(d.År) + - 30) // Adjust position as needed
+  .attr("y", d => y1(d["Antal körda mil"]) - 15 ) // Adjust position as needed
+  .text(d => d["Antal körda mil"] + " mil")
+  .style("font-size", "12px")
+  .attr("fill", "#003300");
 
-    // Add labels for x and y axes in both graphs
-    // svg1.append("text")
-    //     .attr("x", width / 2)
-    //     .attr("y", height + margin.bottom - 30)
-    //     .attr("text-anchor", "middle")
-    //     .text("År");
+    // Highlight the year 2023 with a dot for the second line
+svg2.selectAll(".dot2")
+.data(data.filter(d => d.År === 2023))
+.enter().append("circle")
+.attr("class", "dot2")
+.attr("cx", d => x(d.År))
+.attr("cy", d => y2(d["Medelkörsträcka"]))
+.attr("r", 5)
+.attr("fill", "#99cfab");
+
+svg2.selectAll(".text2")
+  .data(data.filter(d => d.År === 2023))
+  .enter().append("text")
+  .attr("class", "text2")
+  .attr("x", d => x(d.År) + - 20) // Adjust position as needed
+  .attr("y", d => y2(d["Medelkörsträcka"]) - -20) // Adjust position as needed
+  .text(d => d["Medelkörsträcka"] + " mil")
+  .style("font-size", "12px")
+  .attr("fill", "#99cfab");
+ 
 
     svg1.append("text")
         .attr("transform", "rotate(-90)")
@@ -128,11 +142,6 @@ svg2.append("g")
         .attr("text-anchor", "middle")
         .text("Antal körda mil");
 
-    // svg2.append("text")
-    //     .attr("x", width / 2)
-    //     .attr("y", height + margin.bottom - 30)
-    //     .attr("text-anchor", "middle")
-    //     .text("År");
 
     svg2.append("text")
         .attr("transform", "rotate(-90)")
