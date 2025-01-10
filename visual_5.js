@@ -221,7 +221,7 @@ function createEnhancedStackedAreaPlot(data) {
     .enter().append("path")
     .attr("class", "area")
     .attr("d", area)
-    .attr("fill", (d, i) => i === 0 ? "rgba(0,51,0,0.7)" : "rgba(51,102,204,0.5)") // Colors with transparency
+    .attr("fill", (d, i) => i === 0 ? "#33ff99" : "#003300") // Colors with transparency
     .attr("stroke", "none");
 
   // Add lines on top of each area
@@ -231,14 +231,14 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("class", "line")
     .attr("d", line)
     .attr("fill", "none")
-    .attr("stroke", (d, i) => i === 0 ? "rgba(0,51,0,0.7)" : "rgba(51,102,204,0.5)")  // Line color matching area color
+    .attr("stroke", (d, i) => i === 0 ? "#33ff99" : "#003300")  // Line color matching area color
     .attr("stroke-width", 1.5);  // Line width
 
   // Add X-axis
   svg.append("g")
     .attr("transform", `translate(0,${höjd})`)
     .call(d3.axisBottom(x)
-      .tickValues(x.domain().filter((d, i) => i % 5 === 0))) // Show every 5th year
+      .tickValues(x.domain().filter((d, i) => i % 3 === 0))) // Show every 5th year
     .selectAll("text")
     .style("text-anchor", "end");
 
@@ -265,8 +265,8 @@ function createEnhancedStackedAreaPlot(data) {
 
   // Add Legend
   const legendData = [
-    { color: "rgba(0,51,0,0.7)", label: "Tunga lastbilar" },
-    { color: "rgba(51,102,204,0.5)", label: "Totalt utsläpp från alla vägtransporter" }
+    { color: "#33ff99", label: "Tunga lastbilar över 3.5ton" },
+    { color: "#003300", label: "Totalt utsläpp från alla vägtransporter" }
   ];
 
   const legend = svg.append("g")
@@ -274,7 +274,7 @@ function createEnhancedStackedAreaPlot(data) {
 
   legendData.forEach((item, index) => {
     const legendItem = legend.append("g")
-      .attr("transform", `translate(${index * 150}, 0)`); // Stack legend items horizontally
+      .attr("transform", `translate(${index * 200}, 0)`); // Stack legend items horizontally
 
     legendItem.append("rect")
       .attr("width", 20)

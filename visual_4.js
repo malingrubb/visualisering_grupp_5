@@ -12,8 +12,8 @@ d3.dsv(";", "/csv/bankebilar2010-2023.csv").then(function(data) {
 });
 
 function skapaLinjediagram(data) {
-    const margin = { top: 50, right: 100, bottom: 50, left: 90 };
-    const width = 800 - margin.left - margin.right;
+    const margin = { top: 50, right: 50, bottom: 50, left: 90 };
+    const width = 700 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
     // Create first SVG for "Antal körda mil"
@@ -60,16 +60,16 @@ function skapaLinjediagram(data) {
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-    svg2.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+  svg2.append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-    // Add y-axes
-    svg1.append("g")
-        .call(d3.axisLeft(y1).tickFormat(d => `${(d / 1e6).toFixed(2)} milj`)); // Format as millions
+// Add y-axes
+svg1.append("g")
+    .call(d3.axisLeft(y1).ticks(5).tickFormat(d => `${(d / 1e6).toFixed(0)} milj`)); // Format as millions
 
-        svg2.append("g")
-        .call(d3.axisLeft(y2).tickFormat(d => `${d} mil`)); // Format tick labels
+svg2.append("g")
+    .call(d3.axisLeft(y2).tickFormat(d => `${d} mil`)); // Format tick labels
 
     // Add the first line (Antal körda mil)
     svg1.append("path")
@@ -117,7 +117,7 @@ function skapaLinjediagram(data) {
     svg1.append("text")
         .attr("transform", "rotate(-90)")
         .attr("x", -height / 2)
-        .attr("y", -margin.left + 15)
+        .attr("y", -margin.left + 30)
         .attr("text-anchor", "middle")
         .text("Antal körda mil");
 
@@ -133,4 +133,21 @@ function skapaLinjediagram(data) {
         .attr("y", -margin.left + 15)
         .attr("text-anchor", "middle")
         .text("Medelkörsträcka");
+
+    // Add titles to the graphs
+    svg1.append("text")
+        .attr("x", width / 2)
+        .attr("y", -margin.top / 2)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("font-weight", "regular")
+        .text("Antal körda mil för timmerbil över tid");
+
+    svg2.append("text")
+        .attr("x", width / 2)
+        .attr("y", -margin.top / 2)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("font-weight", "regular")
+        .text("Medelkörsträcka för timmerbil över tid");
 }
