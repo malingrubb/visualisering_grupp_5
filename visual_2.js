@@ -83,7 +83,7 @@
         .attr("x", width / 2)
         .attr("y", 0 - margin.top / 2)
         .attr("text-anchor", "middle")
-        .style("font-size", "32px")
+        .style("font-size", "16px")
         .text("Skogsmark i Sverige");
 
     const x = d3.scaleBand()
