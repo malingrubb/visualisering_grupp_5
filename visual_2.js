@@ -142,8 +142,8 @@
 
     // Add text labels next to the bars instead of a separate legend
     const legendNames2 = {
-      "211": "Skogsmark produktiv 58%",
-      "212": "Skogsmark ej produktiv 10.8%"
+      "211": "Skogsmark produktiv",
+      "212": "Skogsmark ej produktiv"
   };
 
     const lastBarX = x("2020") + x.bandwidth();
@@ -162,7 +162,6 @@
     const commentsContainer = d3.select(".comments-container");
     comments.forEach(comment => {
         commentsContainer.append("p")
-            .attr("class", "body-text")
             .style("margin-bottom", "10px")
             .text(`${legendNames2[comment.value]}: ${comment.comment}`);
         commentsContainer.append("p")
