@@ -4,13 +4,14 @@
         d.År = +d.År;
         d["Antal timmerbilar"] = +d["Antal timmerbilar"].replace(/\s/g, '');
       });
+
+      const filteredData = data.filter(d => d.År >= 2013);
       
-      console.log(data);
-      skapaLinjediagram2(data);
+      console.log(filteredData);
+      skapaLinjediagram2(filteredData);
     }).catch(function(error) {
       console.log("Ett fel uppstod vid inläsning av CSV-filen:", error);
     });
-    
     function skapaLinjediagram2(data) {
       const bredd = 700;
       const höjd = 500;
@@ -32,6 +33,16 @@
       x.domain(data.map(d => d.År));
       y.domain([1400, d3.max(data, d => d["Antal timmerbilar"]) * 1.1]);
     
+
+
+  // Add the figure text under the graph
+  d3.select("div.visual_3").append("div")
+  .attr("class", "figure-text")
+  .style("text-align", "left")
+  .style("margin-top", "10px")
+  .text("Figur 3: Antal timmerbilar från 2013 till 2023. Data hämtat från Trafikanalys.");
+
+
       // Skapa linje-generator
       const line = d3.line()
         .x(d => x(d.År) + x.bandwidth() / 2) // Beräkna x-koordinater för linjen
@@ -53,10 +64,15 @@
         .style("text-anchor", "end")
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
-        .attr("transform", "rotate(-65)");
+        .attr("transform", "rotate(-65)")
+        .style("font-size", "12px"); // Ändra storleken efter behov
+
+
     
       svg.append("g")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y))
+        .style("font-size", "12px"); // Ändra storleken efter behov
+
     
       // Lägg till titel
       svg.append("text")
@@ -72,7 +88,7 @@
         .attr("cx", x(lastDataPoint.År) + x.bandwidth() / 2)
         .attr("cy", y(lastDataPoint["Antal timmerbilar"]))
         .attr("r", 5)
-        .attr("fill", "green");
+        .attr("fill", "003300");
 
       // Lägg till text som visar värdet för sista året
       svg.append("text")
@@ -80,7 +96,12 @@
         .attr("y", y(lastDataPoint["Antal timmerbilar"]) - 10)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
-        .style("fill", "green")
+        .style("fill", "003300")
         .text(`${lastDataPoint["Antal timmerbilar"]} st`);
+
+
+
+
+        
     }
   

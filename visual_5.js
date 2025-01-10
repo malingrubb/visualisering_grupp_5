@@ -6,6 +6,9 @@ d3.csv("/csv/data-och-statistik-klimat-vaxthusgaser-utslapp-fran-inrikes-transpo
       d["Tunga lastbilar"] = +d["Tunga lastbilar"].replace(/\s/g, '') || 0; // Clean and convert emissions
     });
 
+    // Filter data to only include years between 2013 and 2023
+    data = data.filter(d => d.År >= 2013 && d.År <= 2023);
+
     console.log(data); 
 
     // createBarPlot(data);
@@ -221,7 +224,7 @@ function createEnhancedStackedAreaPlot(data) {
     .enter().append("path")
     .attr("class", "area")
     .attr("d", area)
-    .attr("fill", (d, i) => i === 0 ? "#33ff99" : "#003300") // Colors with transparency
+    .attr("fill", (d, i) => i === 0 ? "#003300" : " #99cfab") // Colors with transparency
     .attr("stroke", "none");
 
   // Add lines on top of each area
@@ -231,7 +234,7 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("class", "line")
     .attr("d", line)
     .attr("fill", "none")
-    .attr("stroke", (d, i) => i === 0 ? "#33ff99" : "#003300")  // Line color matching area color
+    .attr("stroke", (d, i) => i === 0 ? "#003300" : " #99cfab")  // Line color matching area color
     .attr("stroke-width", 1.5);  // Line width
 
   // Add X-axis
@@ -240,11 +243,15 @@ function createEnhancedStackedAreaPlot(data) {
     .call(d3.axisBottom(x)
       .tickValues(x.domain().filter((d, i) => i % 3 === 0))) // Show every 5th year
     .selectAll("text")
-    .style("text-anchor", "end");
+    .style("text-anchor", "end")
+    .style("font-size", "12px"); // Ändra storleken efter behov
+
 
   // Add Y-axis
   svg.append("g")
-    .call(d3.axisLeft(y).tickFormat(d => `${d} milj`));
+    .call(d3.axisLeft(y).tickFormat(d => `${d} milj`))
+    .style("font-size", "12px"); // Ändra storleken efter behov
+
 
   // Add title
   svg.append("text")
@@ -263,10 +270,17 @@ function createEnhancedStackedAreaPlot(data) {
     .attr("x", -höjd / 2)
     .text("Växthusgaser utsläpp (ton)");
 
+      // Add the figure text under the graph
+  d3.select("div.visual_5").append("div")
+  .attr("class", "figure-text")
+  .style("text-align", "left")
+  .style("margin-top", "10px")
+  .text("Figur 5: Utsläpp från olika inrikes transporter i Sverige. Data hämtat från Naturvårdsverket.");
+
   // Add Legend
   const legendData = [
-    { color: "#33ff99", label: "Tunga lastbilar över 3.5ton" },
-    { color: "#003300", label: "Totalt utsläpp från alla vägtransporter" }
+    { color: "#003300", label: "Tunga lastbilar över 3.5 ton" },
+    { color: " #99cfab", label: "Totalt utsläpp från alla vägtransporter" }
   ];
 
   const legend = svg.append("g")

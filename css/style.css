@@ -2,7 +2,8 @@
   /* Färgpalett */
   --forest: #003300;
   --fog: #99cfab;
-  --breeze: #d1f7e5;
+  /* --breeze: #d1f7e5; */
+  --breeze: #eafffe;
   --night_black: #000000;
   --light_the_way: #33ff99;
 }
@@ -28,8 +29,13 @@ a:hover {
 }
 
 .container {
-  margin: 2rem;
+  margin-left: 10rem;
+  margin-top: 5rem;
   width: 80%;
+}
+
+.text-container {
+  width: 70%;
 }
 
 .background-color {
@@ -48,15 +54,26 @@ a:hover {
 
 .headline-text {
   /* 150px/155px */
-  font-size: 9.375rem;
+  /* font-size: 9.375rem; */
+  /* h1 */
+  font-size: 3.815rem;
   line-height: 1.2;
   font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.h3_headline {
+font-size: 2.441rem;
 }
 
 .introduction-text {
   /* font-size: 39px; */
-  font-size: 2.438rem;
-  font-weight: 100;
+  /* h4 */
+  /* font-size: 2.438rem; */
+  font-size: 1.953rem;
+  /* font-weight: 100; */
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 .info-text {
@@ -67,8 +84,15 @@ a:hover {
 
 .body-text {
   /* font-size: 29px; */
-  font-size: 1.813rem;
+  /* font-size: 1.813rem; */
+  font-size: 1rem;
   font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.figure-text {
+  font-style: italic;
+  font-size: 90%;
 }
 
 .font-color--dark {
@@ -117,5 +141,33 @@ a:hover {
 
 .visuals {
 width: 100%;
+}
+
+.visual_1 {
+  border: #003300 1px solid;
+}
+
+.visual_2 {
+  border: #003300 1px solid;
+}
+
+.visual_3 {
+  border: #003300 1px solid;
+}
+
+.visual_4 {
+  border: #003300 1px solid;
+}
+
+.visual_5 {
+  border: #003300 1px solid;
+}
+
+.visual_6 {
+  border: #003300 1px solid;
+}
+
+.visual_1, .visual_3, .visual_4, .visual_5, .visual_6 {
+  margin-bottom: 1.5rem;
 }
 

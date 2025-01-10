@@ -78,7 +78,7 @@ d3.csv("/csv/fiktiv-utsläpp.csv").then(function(data) {
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("font-weight", "regular")
-    .text("Tunga lastbilars vikt vs utsläpp (fiktiv data)");
+    .text("Tunga lastbilars vikt vs utsläpp");
 
   // Filtrera data för att få de datapunkter som ligger inom intervallet 64-74 ton
   const filteredData = data.filter(d => d.Vikt_ton >= 64 && d.Vikt_ton <= 74);
@@ -124,6 +124,13 @@ d3.csv("/csv/fiktiv-utsläpp.csv").then(function(data) {
     .attr("text-anchor", "start")
     .style("font-size", "12px")
     .text("Viktklassen för timmerbilar");
+
+      // Add the figure text under the graph
+  d3.select("div.visual_6").append("div")
+  .attr("class", "figure-text")
+  .style("text-align", "left")
+  .style("margin-top", "10px")
+  .text("Figur 6: Utsläpp från kategorin tunga lastbilar. Datan är fiktiv och är skapad av ChatGPT men är baserad på riktig data från 2023.");
 
 }).catch(function(error) {
   console.log("Ett fel uppstod vid inläsning av CSV-filen:", error);
