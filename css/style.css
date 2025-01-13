@@ -36,6 +36,9 @@ a:hover {
 
 .text-container {
   width: 70%;
+  background-color: var(--forest);
+  border-radius: 1rem;
+  color: white;
 }
 
 .background-color {
@@ -87,7 +90,8 @@ a:hover {
   /* font-size: 1.813rem; */
   font-size: 1rem;
   font-weight: 400;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+  width: 70%;
 }
 
 .figure-text {
@@ -178,3 +182,11 @@ section {
 .visual_6 {
   margin-bottom: 1.5rem;
 }
+
+.map1 {
+  width: 40%;
+}
+
+/* .timbertruck-svg {
+  fill: green;
+} */
