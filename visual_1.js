@@ -208,7 +208,7 @@
 // Visual_1
 
 function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
-  d3.xml("./svg/sweden.svg").then(svg => {
+  d3.xml("./svg/tree_frame_68.svg").then(svg => {
     const svgNode = svg.documentElement;
     const container = d3.select(containerId);
 
