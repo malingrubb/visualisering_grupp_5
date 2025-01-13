@@ -63,7 +63,7 @@ a:hover {
 }
 
 .h3_headline {
-font-size: 2.441rem;
+  font-size: 2.441rem;
 }
 
 .introduction-text {
@@ -140,7 +140,7 @@ font-size: 2.441rem;
 }
 
 .visuals {
-width: 100%;
+  width: 100%;
 }
 
 .visual_1 {
@@ -167,7 +167,14 @@ width: 100%;
   border: #003300 1px solid;
 }
 
-.visual_1, .visual_3, .visual_4, .visual_5, .visual_6 {
-  margin-bottom: 1.5rem;
+section {
+  border: #a55e9f 1px solid;
 }
 
+.visual_1,
+.visual_3,
+.visual_4,
+.visual_5,
+.visual_6 {
+  margin-bottom: 1.5rem;
+}

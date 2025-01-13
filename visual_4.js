@@ -45,7 +45,7 @@ function skapaLinjediagram(data) {
         .range([height, 0]);
 
     const y2 = d3.scaleLinear()
-        .domain([d3.min(data, d => d["Medelkörsträcka"]) * 0.9, d3.max(data, d => d["Medelkörsträcka"])])
+        .domain([d3.min(data, d => d["Medelkörsträcka"]) * 0.95, d3.max(data, d => d["Medelkörsträcka"])])
         .nice()
         .range([height, 0]);
 
@@ -105,7 +105,7 @@ svg1.selectAll(".dot1")
 .attr("fill", "#003300");
 
 svg1.selectAll(".text1")
-  .data(data.filter(d => d.År === 2023))
+.data(data.filter(d => d.År === 2021 || d.År === 2023))
   .enter().append("text")
   .attr("class", "text1")
   .attr("x", d => x(d.År) + - 30) // Adjust position as needed

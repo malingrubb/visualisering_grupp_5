@@ -123,53 +123,84 @@
 // }
 
 
-const width = 500;
-const height = 500;
-const margin = 40;
+// const width = 500;
+// const height = 500;
+// const margin = 40;
 
-const radius = Math.min(width, height) / 2 - margin;
+// const radius = Math.min(width, height) / 2 - margin;
 
-const svg = d3.select("div.visual_1").append("svg")
-  .attr("width", width)
-  .attr("height", height)
-  .append("g")
-  .attr("transform", `translate(${width / 2},${height / 2})`);
+// const svg = d3.select("div.visual_1").append("svg")
+//   .attr("width", width)
+//   .attr("height", height)
+//   .append("g")
+//   .attr("transform", `translate(${width / 2},${height / 2})`);
 
-const data = { filled: 68, empty: 32 };
+// const data = { filled: 68, empty: 32 };
 
-const color = d3.scaleOrdinal()
-  .domain(Object.keys(data)) // Använd Object.keys för att få en array av nycklarna
-  .range(["#003300", "#eafffe"]);
+// const color = d3.scaleOrdinal()
+//   .domain(Object.keys(data)) // Använd Object.keys för att få en array av nycklarna
+//   .range(["#003300", "#eafffe"]);
 
-const pie = d3.pie()
-  .value(d => d[1]); // Använd värdet från nyckel-värde-paret
+// const pie = d3.pie()
+//   .value(d => d[1]); // Använd värdet från nyckel-värde-paret
 
-const data_ready = pie(Object.entries(data)); // Använd Object.entries istället för d3.entries
+// const data_ready = pie(Object.entries(data)); // Använd Object.entries istället för d3.entries
 
-const arc = d3.arc()
-  .innerRadius(radius * 0.5)
-  .outerRadius(radius);
+// const arc = d3.arc()
+//   .innerRadius(radius * 0.5)
+//   .outerRadius(radius);
 
-svg.selectAll('slices')
-  .data(data_ready)
-  .enter()
-  .append('path')
-  .attr('d', arc)
-  .attr('fill', d => color(d.data[0])) // Använd nyckeln från nyckel-värde-paret
-  .attr("stroke", "#003300")
-  .style("stroke-width", "1px")
+// svg.selectAll('slices')
+//   .data(data_ready)
+//   .enter()
+//   .append('path')
+//   .attr('d', arc)
+//   .attr('fill', d => color(d.data[0])) // Använd nyckeln från nyckel-värde-paret
+//   .attr("stroke", "#003300")
+//   .style("stroke-width", "1px")
 
-// Lägg till text i mitten av cirkeldiagrammet
-svg.append("text")
-  .attr("text-anchor", "middle")
-  .attr("dy", ".35em")
-  .style("font-size", "24px")
-  // .style("font-weight", "bold")
-  .text("68%");
+// // Lägg till text i mitten av cirkeldiagrammet
+// svg.append("text")
+//   .attr("text-anchor", "middle")
+//   .attr("dy", ".35em")
+//   .style("font-size", "24px")
+//   // .style("font-weight", "bold")
+//   .text("68%");
 
-  // Add the figure text under the graph
-  d3.select("div.visual_1").append("div")
-  .attr("class", "figure-text")
-  .style("text-align", "left")
-  .style("margin-top", "10px")
-  .text("Figur 1. Data hämtad från .....");
+//   // Add the figure text under the graph
+//   d3.select("div.visual_1").append("div")
+//   .attr("class", "figure-text")
+//   .style("text-align", "left")
+//   .style("margin-top", "10px")
+//   .text("Figur 1. Data hämtad från .....");
+
+d3.xml("svg/forest_graph.svg").then(function (xml) {
+  // Append the loaded SVG to the container
+  const importedNode = document.importNode(xml.documentElement, true);
+  d3.select("div.visual_1").node().appendChild(importedNode);
+
+  // Select the SVG container
+  const forestSvg = d3.select("div.visual_1 svg");
+
+  // Set the width and height of the SVG
+  const width = 500;  // Set the desired width
+  const height = 500; // Set the desired height
+  forestSvg
+    .attr("width", width)
+    .attr("height", height);
+
+  // Ensure the SVG has loaded and has the expected paths
+  const totalArc = forestSvg.selectAll("path");
+
+  console.log("Paths found:", totalArc.nodes().length); // Log number of paths found
+
+  // Remove all colors from the paths
+  totalArc
+    .attr("fill", "none")
+    .attr("stroke", "none");
+
+}).catch(function (error) {
+  console.error("Error loading the SVG:", error);
+  // Optional: Add a fallback message
+  d3.select("div.visual_1").append("p").text("Failed to load the SVG.");
+});

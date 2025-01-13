@@ -130,7 +130,7 @@ d3.csv("/csv/fiktiv-utsläpp.csv").then(function(data) {
   .attr("class", "figure-text")
   .style("text-align", "left")
   .style("margin-top", "10px")
-  .text("Figur 6: Utsläpp från kategorin tunga lastbilar. Datan är fiktiv och är skapad av ChatGPT men är baserad på riktig data från 2023.");
+  .text("Figur 6: Utsläpp från kategorin tunga lastbilar. Datan är fiktiv och är skapad av ChatGPT.");
 
 }).catch(function(error) {
   console.log("Ett fel uppstod vid inläsning av CSV-filen:", error);
