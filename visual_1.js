@@ -208,7 +208,7 @@
 // Visual_1
 
 function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
-  d3.xml("./svg/tree_frame_68.svg").then(svg => {
+  d3.xml("./svg/tree_frame_coloured.svg").then(svg => {
     const svgNode = svg.documentElement;
     const container = d3.select(containerId);
 
@@ -265,7 +265,7 @@ function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
   .attr("class", "figure-text")
   .style("text-align", "left")
   .style("margin-top", "20px")
-  .text("Figur 1: En visualisering av Sverige där skogsmarken är färgad i mörkgrönt och övrig mark i ljusgrönt. Detta visar på den procentuella fördelningen av skogsmark i Sverige år 2023 och har inget med de omården som innehåller skog att göra.");
+  .text("Figur 1: En visualisering av andelen skogsmark i Sverige 2023. Detta visar på den procentuella fördelningen på 68% skogsmark.");
   });
 }
 

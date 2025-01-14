@@ -187,6 +187,22 @@ section {
   width: 40%;
 }
 
+.heatmap-cell {
+  stroke: #ccc;
+}
+.text {
+  font-size: 12px;
+  text-anchor: middle;
+  fill: white;
+}
+.row-label, .col-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+.legend {
+  font-size: 12px;
+}
+
 /* .timbertruck-svg {
   fill: green;
 } */

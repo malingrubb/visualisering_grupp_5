@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <!-- Background -->
+  <rect width="800" height="800" fill="#f5f5f5" />
+
+  <!-- Title -->
+  <text x="50%" y="50" text-anchor="middle" font-size="24" font-family="Arial" fill="#333">Jämförelse av timmermätning och Ikorni</text>
+
+  <!-- Section: Traditionell timmermätning -->
+  <g transform="translate(50, 100)">
+    <text x="0" y="0" font-size="20" font-family="Arial" fill="#003300">Traditionell timmermätning</text>
+
+    <!-- Total CO2-utsläpp -->
+    <text x="0" y="40" font-size="16" font-family="Arial" fill="#555">5670 - 11340 ton CO2 per år</text>
+    <rect x="0" y="60" width="500" height="30" fill="#d2691e" />
+    <rect x="0" y="60" width="250" height="30" fill="#8b4513" /> <!-- Intervall -->
+    <text x="510" y="80" font-size="14" font-family="Arial" fill="#555">Max: 11340 ton</text>
+    <text x="260" y="80" font-size="14" font-family="Arial" fill="#fff">Min: 5670 ton</text>
+
+    <!-- Vändor per år -->
+    <text x="0" y="120" font-size="16" font-family="Arial" fill="#555">900 vändor per timmerbil/år</text>
+    <circle cx="50" cy="160" r="40" fill="#ff9933" />
+    <text x="50" y="165" text-anchor="middle" font-size="16" font-family="Arial" fill="#fff">900</text>
+
+    <!-- CO2 per vända -->
+    <text x="0" y="220" font-size="16" font-family="Arial" fill="#555">2700 - 5400 kg CO2 per vända</text>
+    <line x1="0" y1="240" x2="500" y2="240" stroke="#8b4513" stroke-width="10" />
+    <line x1="0" y1="240" x2="250" y2="240" stroke="#d2691e" stroke-width="10" />
+    <text x="510" y="245" font-size="14" font-family="Arial" fill="#555">Max: 5400 kg</text>
+    <text x="260" y="245" font-size="14" font-family="Arial" fill="#fff">Min: 2700 kg</text>
+  </g>
+
+  <!-- Section: Ikorni besparingar -->
+  <g transform="translate(50, 360)">
+    <text x="0" y="0" font-size="20" font-family="Arial" fill="#003300">Besparingar med Ikorni</text>
+
+    <!-- Tidssparande -->
+    <text x="0" y="40" font-size="16" font-family="Arial" fill="#555">200 000 timmar sparade</text>
+    <rect x="0" y="60" width="600" height="30" fill="#4CAF50" />
+    <text x="610" y="80" font-size="14" font-family="Arial" fill="#555">200 000 timmar</text>
+
+    <!-- Utsläppsminskning -->
+    <text x="0" y="120" font-size="16" font-family="Arial" fill="#555">6 miljoner kg CO2 sparade</text>
+    <rect x="0" y="140" width="600" height="30" fill="#2196F3" />
+    <text x="610" y="160" font-size="14" font-family="Arial" fill="#555">6 000 000 kg</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="50%" y="780" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">Ikorni revolutionerar timmermätning med stora besparingar för både tid och miljö</text>
+</svg>
