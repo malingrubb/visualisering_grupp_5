@@ -139,8 +139,8 @@ function createVerticalBarChart() {
         .attr("x", width / 2)
         .attr("y", -20)
         .attr("text-anchor", "middle")
-        .attr("class", "chart-title")
-        .text("Utsläpp av koldioxid från dieselförbrukning, per timmerbil");
+        .attr("class", "visual_label")
+        .text("Utsläpp av Co2 per timmerbil");
 }
 
 // Anropa funktionen för att skapa det stående stapeldiagrammet

@@ -52,7 +52,7 @@ function createHorizontalBarChart() {
     svg.selectAll(".value-label")
         .data(dataDiesel)
         .enter().append("text")
-        .attr("class", "value-label")
+        .attr("class", "visual_label--2")
         .attr("x", d => x(d.value) + 5)
         .attr("y", d => y(d.category) + y.bandwidth() / 2)
         .attr("dy", "0.35em")
@@ -63,7 +63,7 @@ svg.append("text")
 .attr("x", width / 2)
 .attr("y", -20)
 .attr("text-anchor", "middle")
-.attr("class", "chart-title")
+.attr("class", "visual_label")
 .text("Dieselförbrukning per år och timmerbil");
 }
 

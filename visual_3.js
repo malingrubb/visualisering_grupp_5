@@ -39,7 +39,7 @@
   d3.select("div.visual_3").append("div")
   .attr("class", "figure-text")
   .style("text-align", "left")
-  .style("margin-top", "10px")
+
   .text("Figur 3: Antal timmerbilar från 2013 till 2023. Data hämtat från Trafikanalys.");
 
 
@@ -79,7 +79,7 @@
         .attr("x", (bredd / 2))
         .attr("y", 0 - (marginal.top / 2))
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
+        .attr("class", "visual_label") 
         .text("Antal timmerbilar i trafik per år");
 
               // Lägg till en punkt på sista värdet (år 2023)

@@ -69,14 +69,7 @@ d3.csv("/csv/data-och-statistik-klimat-vaxthusgaser-utslapp-fran-inrikes-transpo
         .tickValues([maxTungaLastbilar, maxTotalt]) // Define custom tick values including the max values
         .tickFormat(d => `${d} milj`)); // Format ticks with "milj"
     
-    // Add Y-axis label
-    svg.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 0 - marginal.vänster)
-      .attr("x", 0 - (höjd / 2))
-      .attr("dy", "1em")
-      .style("text-anchor", "middle")
-      .text("Utsläpp (milj ton)");
+
     
 
 // Add Y-axis label
@@ -86,7 +79,8 @@ svg.append("text")
   .attr("x", 0 - (höjd / 2))
   .attr("dy", "1em")
   .style("text-anchor", "middle")
-  .text("Utsläpp (milj ton)");
+  .attr("class", "visual_label-2")
+  .text("Utsläpp, miljoner ton");
   
     // Define your own color scale
 const color = d3.scaleOrdinal()
@@ -129,8 +123,9 @@ svg.selectAll(".layer")
       legendItem.append("text")
         .attr("x", 25)
         .attr("y", 15)
-        .style("font-size", "12px")
-        .text(item.label);
+        .text(item.label)
+        .attr("class", "legend_label");
+
     });
 
     // Add figuretext 
@@ -145,7 +140,7 @@ svg.selectAll(".layer")
   .attr("x", (bredd / 2))
   .attr("y", 0 - (marginal.top / 2))
   .attr("text-anchor", "middle")
-  .style("font-size", "16px")
+  .attr("class", "visual_label")
   .text("Utsläpp av växthusgaser från vägtransporter i Sverige");
 
 

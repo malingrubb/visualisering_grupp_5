@@ -96,8 +96,29 @@ a:hover {
 
 .figure-text {
   font-style: italic;
-  font-size: 90%;
+  font-size: 85%;
 }
+
+.visual_label {
+  /* rubriker till visualiseringar */
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.legend_label {
+  font-size: 0.8rem;
+  font-weight: 400;
+  
+}
+
+.visual_label--2 { 
+  /* x och y axel labels*/
+  font-size: 1.0rem;
+  font-weight: 400;
+
+}
+
 
 .font-color--dark {
   color: var(--forest);
@@ -146,7 +167,7 @@ a:hover {
 .visuals {
   width: 100%;
 }
-
+/* 
 .visual_1 {
   border: #003300 1px solid;
 }
@@ -169,11 +190,11 @@ a:hover {
 
 .visual_6 {
   border: #003300 1px solid;
-}
+} */
 
-section {
+/* section {
   border: #a55e9f 1px solid;
-}
+} */
 
 .visual_1,
 .visual_3,

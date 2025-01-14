@@ -122,8 +122,7 @@ svg.append("text")
     .attr("x", width / 2)
     .attr("y", -margin.top / 2)
     .attr("text-anchor", "middle")
-    .style("font-size", "16px")
-    .style("font-weight", "regular")
+    .attr("class", "visual_label")
     .text("Resultat från kvalitativa intervjuer om dagens mätning av timmer");
 
 // Define scales

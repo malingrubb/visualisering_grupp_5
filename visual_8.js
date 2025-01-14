@@ -9,7 +9,7 @@ function createChart() {
     // Funktion för att hämta dimensioner och marginaler
     function getDimensions() {
         const margin = { top: 50, right: 20, bottom: 30, left: 40 };
-        const width = 400 - margin.left - margin.right;
+        const width = 450 - margin.left - margin.right;
         const height = 550 - margin.top - margin.bottom;
         return { margin, width, height };
     }
@@ -54,11 +54,12 @@ function createChart() {
     svg.append("g")
         .call(d3.axisLeft(y));
 
-        svg.append("text")
-.attr("x", width / 2)
-.attr("y", -20)
+
+svg.append("text")
+.attr("x", (width / 2))
+.attr("y", 0 - (margin.top / 2))
 .attr("text-anchor", "middle")
-.attr("class", "chart-title")
+.attr("class", "visual_label")
 .text("Antal timmervändor per år och timmerbil");
 
 }
