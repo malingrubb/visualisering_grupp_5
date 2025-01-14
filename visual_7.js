@@ -59,30 +59,49 @@
 
   // Define the data
   const data = [
-    { category: 'Bränsleförbrukning', interview: 'Person 1', value: 5 },
+    { category: 'Bränsleförbrukning', interview: 'Person 1', value: 2 },
     { category: 'Bränsleförbrukning', interview: 'Person 2', value:4 },
-    { category: 'Bränsleförbrukning', interview: 'Person 3', value: 5 },
-    { category: 'Bränsleförbrukning', interview: 'Person 4', value: 5},
-    { category: 'Bränsleförbrukning', interview: 'Person 5', value: 5 },
-    { category: 'Bränsleförbrukning', interview: 'Person 6', value: 5 },
+    { category: 'Bränsleförbrukning', interview: 'Person 3', value: 3 },
+    { category: 'Bränsleförbrukning', interview: 'Person 4', value: 4},
+    { category: 'Bränsleförbrukning', interview: 'Person 5', value: 4 },
+    { category: 'Bränsleförbrukning', interview: 'Person 6', value: 4 },
     { category: 'Effektivitet', interview: 'Person 1', value: 1 },
     { category: 'Effektivitet', interview: 'Person 2', value: 2 },
     { category: 'Effektivitet', interview: 'Person 3', value: 3 },
     { category: 'Effektivitet', interview: 'Person 4', value: 4 },
     { category: 'Effektivitet', interview: 'Person 5', value: 5 },
     { category: 'Effektivitet', interview: 'Person 6', value: 4 },
-    { category: 'Dagens metod', interview: 'Person 1', value: 5 },
-    { category: 'Dagens metod', interview: 'Person 2', value: 4.5 },
-    { category: 'Dagens metod', interview: 'Person 3', value: 5 },
-    { category: 'Dagens metod', interview: 'Person 4', value: 5 },
-    { category: 'Dagens metod', interview: 'Person 5', value: 5 },
-    { category: 'Dagens metod', interview: 'Person 6', value: 5 },
+    { category: 'Dagens metod', interview: 'Person 1', value: 4 },
+    { category: 'Dagens metod', interview: 'Person 2', value: 2 },
+    { category: 'Dagens metod', interview: 'Person 3', value: 2 },
+    { category: 'Dagens metod', interview: 'Person 4', value: 1 },
+    { category: 'Dagens metod', interview: 'Person 5', value: 1 },
+    { category: 'Dagens metod', interview: 'Person 6', value: 2.5 },
     { category: 'Hållbart/miljö', interview: 'Person 1', value: 1 },
     { category: 'Hållbart/miljö', interview: 'Person 2', value: 1 },
     { category: 'Hållbart/miljö', interview: 'Person 3', value: 2 },
     { category: 'Hållbart/miljö', interview: 'Person 4', value: 2 },
     { category: 'Hållbart/miljö', interview: 'Person 5', value: 1 },
     { category: 'Hållbart/miljö', interview: 'Person 6', value: 2 },
+    { category: 'Förändring', interview: 'Person 1', value: 2 },
+    { category: 'Förändring', interview: 'Person 2', value: 2 },
+    { category: 'Förändring', interview: 'Person 3', value: 2 },
+    { category: 'Förändring', interview: 'Person 4', value: 2 },
+    { category: 'Förändring', interview: 'Person 5', value: 2 },
+    { category: 'Förändring', interview: 'Person 6', value: 2 },
+    { category: 'Kostnad', interview: 'Person 1', value: 5 },
+    { category: 'Kostnad', interview: 'Person 2', value: 5 },
+    { category: 'Kostnad', interview: 'Person 3', value: 2 },
+    { category: 'Kostnad', interview: 'Person 4', value: 3 },
+    { category: 'Kostnad', interview: 'Person 5', value: 4 },
+    { category: 'Kostnad', interview: 'Person 6', value: 4 },
+    { category: 'Innovation', interview: 'Person 1', value: 2 },
+    { category: 'Innovation', interview: 'Person 2', value: 2 },
+    { category: 'Innovation', interview: 'Person 3', value: 2 },
+    { category: 'Innovation', interview: 'Person 4', value: 2 },
+    { category: 'Innovation', interview: 'Person 5', value: 2 },
+    { category: 'Innovation', interview: 'Person 6', value: 2 },
+   
     // Add more data for other categories and interviews
 ];
 
@@ -105,7 +124,7 @@ svg.append("text")
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("font-weight", "regular")
-    .text("Resultat från kvalitativa intervjuer om Ikorni");
+    .text("Resultat från kvalitativa intervjuer om dagens mätning av timmer");
 
 // Define scales
 const xScale = d3.scaleBand()
