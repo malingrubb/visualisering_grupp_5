@@ -68,39 +68,39 @@
     { category: 'Effektivitet', interview: 'Person 1', value: 1 },
     { category: 'Effektivitet', interview: 'Person 2', value: 2 },
     { category: 'Effektivitet', interview: 'Person 3', value: 3 },
-    { category: 'Effektivitet', interview: 'Person 4', value: 4 },
-    { category: 'Effektivitet', interview: 'Person 5', value: 5 },
-    { category: 'Effektivitet', interview: 'Person 6', value: 4 },
-    { category: 'Dagens metod', interview: 'Person 1', value: 4 },
+    { category: 'Effektivitet', interview: 'Person 4', value: 2 },
+    { category: 'Effektivitet', interview: 'Person 5', value: 1 },
+    { category: 'Effektivitet', interview: 'Person 6', value: 1 },
+    { category: 'Hållbart/miljö', interview: 'Person 1', value: 1 },
+    { category: 'Hållbart/miljö', interview: 'Person 2', value: 4 },
+    { category: 'Hållbart/miljö', interview: 'Person 3', value: 2 },
+    { category: 'Hållbart/miljö', interview: 'Person 4', value: 3 },
+    { category: 'Hållbart/miljö', interview: 'Person 5', value: 1 },
+    { category: 'Hållbart/miljö', interview: 'Person 6', value: 2 },
+    // { category: 'Förändring', interview: 'Person 1', value: 2 },
+    // { category: 'Förändring', interview: 'Person 2', value: 2 },
+    // { category: 'Förändring', interview: 'Person 3', value: 2 },
+    // { category: 'Förändring', interview: 'Person 4', value: 2 },
+    // { category: 'Förändring', interview: 'Person 5', value: 2 },
+    // { category: 'Förändring', interview: 'Person 6', value: 2 },
+    { category: 'Kostnad', interview: 'Person 1', value: 3 },
+    { category: 'Kostnad', interview: 'Person 2', value: 3 },
+    { category: 'Kostnad', interview: 'Person 3', value: 2 },
+    { category: 'Kostnad', interview: 'Person 4', value: 3 },
+    { category: 'Kostnad', interview: 'Person 5', value: 1 },
+    { category: 'Kostnad', interview: 'Person 6', value: 4 },
+    // { category: 'Innovation', interview: 'Person 1', value: 2 },
+    // { category: 'Innovation', interview: 'Person 2', value: 2 },
+    // { category: 'Innovation', interview: 'Person 3', value: 2 },
+    // { category: 'Innovation', interview: 'Person 4', value: 2 },
+    // { category: 'Innovation', interview: 'Person 5', value: 2 },
+    // { category: 'Innovation', interview: 'Person 6', value: 2 },
+    { category: 'Dagens metod', interview: 'Person 1', value: 3 },
     { category: 'Dagens metod', interview: 'Person 2', value: 2 },
     { category: 'Dagens metod', interview: 'Person 3', value: 2 },
     { category: 'Dagens metod', interview: 'Person 4', value: 1 },
     { category: 'Dagens metod', interview: 'Person 5', value: 1 },
     { category: 'Dagens metod', interview: 'Person 6', value: 2.5 },
-    { category: 'Hållbart/miljö', interview: 'Person 1', value: 1 },
-    { category: 'Hållbart/miljö', interview: 'Person 2', value: 1 },
-    { category: 'Hållbart/miljö', interview: 'Person 3', value: 2 },
-    { category: 'Hållbart/miljö', interview: 'Person 4', value: 2 },
-    { category: 'Hållbart/miljö', interview: 'Person 5', value: 1 },
-    { category: 'Hållbart/miljö', interview: 'Person 6', value: 2 },
-    { category: 'Förändring', interview: 'Person 1', value: 2 },
-    { category: 'Förändring', interview: 'Person 2', value: 2 },
-    { category: 'Förändring', interview: 'Person 3', value: 2 },
-    { category: 'Förändring', interview: 'Person 4', value: 2 },
-    { category: 'Förändring', interview: 'Person 5', value: 2 },
-    { category: 'Förändring', interview: 'Person 6', value: 2 },
-    { category: 'Kostnad', interview: 'Person 1', value: 5 },
-    { category: 'Kostnad', interview: 'Person 2', value: 5 },
-    { category: 'Kostnad', interview: 'Person 3', value: 2 },
-    { category: 'Kostnad', interview: 'Person 4', value: 3 },
-    { category: 'Kostnad', interview: 'Person 5', value: 4 },
-    { category: 'Kostnad', interview: 'Person 6', value: 4 },
-    { category: 'Innovation', interview: 'Person 1', value: 2 },
-    { category: 'Innovation', interview: 'Person 2', value: 2 },
-    { category: 'Innovation', interview: 'Person 3', value: 2 },
-    { category: 'Innovation', interview: 'Person 4', value: 2 },
-    { category: 'Innovation', interview: 'Person 5', value: 2 },
-    { category: 'Innovation', interview: 'Person 6', value: 2 },
    
     // Add more data for other categories and interviews
 ];
@@ -133,7 +133,7 @@ const xScale = d3.scaleBand()
     .padding(0.05);
 
 const yScale = d3.scaleBand()
-    .domain(['Bränsleförbrukning', 'Effektivitet', 'Dagens metod', 'Hållbart/miljö', 'Förändring', 'Kostnad', 'Innovation'])
+    .domain(['Bränsleförbrukning', 'Effektivitet', 'Hållbart/miljö', 'Kostnad', 'Dagens metod',])
     .range([height, 0])
     .padding(0.05);
 
@@ -151,6 +151,13 @@ svg.selectAll()
     .attr("width", xScale.bandwidth())
     .attr("height", yScale.bandwidth())
     .style("fill", d => colorScale(d.value));
+
+     // Add figuretext 
+     d3.select("div.visual_7").append("div")
+     .attr("class", "figure-text")
+     .style("text-align", "left")
+     .style("margin-top", "20px")
+     .text("Figur 7: Datan är fiktiv men är baserad på hur vi anser att målgruppen resonerar kring dessa frågor. Skalan visar graden av nöjdhet med dagens mätning av timmer. Mycket missnöjd till mycket nöjd.");
 
 // Add axes
 svg.append("g")
@@ -203,3 +210,5 @@ svg.append("g")
         .call(legendAxis)
         .selectAll("path, line")
         .style("display", "none"); // Hide axis lines
+
+               
