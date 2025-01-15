@@ -79,7 +79,7 @@ svg.append("text")
   .attr("x", 0 - (höjd / 2))
   .attr("dy", "1em")
   .style("text-anchor", "middle")
-  .attr("class", "visual_label-2")
+  .attr("class", "visual_label--2")
   .text("Utsläpp, miljoner ton");
   
     // Define your own color scale
@@ -94,12 +94,27 @@ const area = d3.area()
 .y1(d => y(d[1]));
 
 svg.selectAll(".layer")
+      .data(stack(modifiedData))
+      .enter().append("path")
+      .attr("class", "layer")
+      .attr("d", area)
+      .style("fill", d => color(d.key)) // Use custom color scale
+      .style("fill-opacity", 0.3); // Add opacity to the fill color
+  
+      // Add lines on top of the areas without opacity
+const line = d3.line()
+.x(d => x(d.data.År))
+.y(d => y(d[1]));
+
+svg.selectAll(".line")
 .data(stack(modifiedData))
 .enter().append("path")
-.attr("class", "layer")
-.attr("d", area)
-.style("fill", d => color(d.key)); // Use custom color scale
-  
+.attr("class", "line")
+.attr("d", line)
+.style("fill", "none")
+.style("stroke", d => color(d.key))
+.style("stroke-width", 2);
+
     // Add Legend
     const legendData = [
       { color: "#003300", label: "Tunga lastbilar över 3.5 ton" },
@@ -114,8 +129,8 @@ svg.selectAll(".layer")
         .attr("transform", `translate(${index * 200}, 0)`); // Stack legend items horizontally
   
       legendItem.append("rect")
-        .attr("width", 20)
-        .attr("height", 20)
+        .attr("width", 15)
+        .attr("height", 15)
         .attr("fill", item.color)
         .attr("rx", 9) // Set the x-axis radius
         .attr("ry", 9); // Set the y-axis radius
@@ -133,7 +148,7 @@ svg.selectAll(".layer")
   .attr("class", "figure-text")
   .style("text-align", "left")
   .style("margin-top", "20px")
-  .text("Figur 5: Utsläpp från olika inrikes transporter i Sverige. Data hämtat från Naturvårdsverket.");
+  .text("Figur 4: Utsläpp från olika inrikes transporter i Sverige. Data hämtat från Naturvårdsverket.");
 
   //title
   svg.append("text")

@@ -1,6 +1,6 @@
 const dataDiesel = [
-    { category: "Nuvarande förbrukning", value: 117 * 900 },
-    { category: "Förbrukning med Ikorni", value: 117 * 900 - 22860 }
+    { category: "Nuvarande förbrukning", value: 117 * 900, color: "#99cfab" },
+    { category: "Förbrukning med Ikorni", value: 117 * 900 - 22860, color: "#003300" }
 ];
 
 function createHorizontalBarChart() {
@@ -35,7 +35,8 @@ function createHorizontalBarChart() {
         .attr("y", d => y(d.category))
         .attr("height", y.bandwidth())
         .attr("x", 0)
-        .attr("width", d => x(d.value));
+        .attr("width", d => x(d.value))
+        .attr("fill", d => d.color); // Use the color property
 
     // Lägg till y-axel (kategorier)
     svg.append("g")
@@ -48,6 +49,7 @@ function createHorizontalBarChart() {
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x));
 
+
     // Lägg till värden i slutet av staplarna
     svg.selectAll(".value-label")
         .data(dataDiesel)
@@ -58,13 +60,21 @@ function createHorizontalBarChart() {
         .attr("dy", "0.35em")
         .text(d => d.value.toFixed(0) + " liter");
 
-        // Lägg till rubrik
-svg.append("text")
-.attr("x", width / 2)
-.attr("y", -20)
-.attr("text-anchor", "middle")
-.attr("class", "visual_label")
-.text("Dieselförbrukning per år och timmerbil");
+    // Lägg till rubrik
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -20)
+        .attr("text-anchor", "middle")
+        .attr("class", "visual_label")
+        .text("Dieselförbrukning per år och timmerbil");
+
+           // Add figuretext 
+     d3.select("div.visual_9").append("div")
+     .attr("class", "figure-text")
+     .style("text-align", "left")
+     .style("margin-top", "20px")
+     .text("Figur 6: Dieselförbrukning per år och timmerbil. Källa: Svepreg AB.");
+
 }
 
 // Anropa funktionen för att skapa det liggande stapeldiagrammet

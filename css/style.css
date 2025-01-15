@@ -19,6 +19,17 @@ body {
   color: var(--night_black);
 }
 
+header {
+  background-color: var(--forest);
+  color: var(--breeze);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.header-text {
+  margin-left: 10rem;
+}
+
 a {
   text-decoration: none;
   color: var(--forest);
@@ -43,16 +54,6 @@ a:hover {
 
 .background-color {
   background-color: var(--breeze);
-}
-
-.hero-img {
-  background-image: url("../img/svepreg_img_1.png");
-  object-fit: contain;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 50rem;
 }
 
 .headline-text {
@@ -90,8 +91,8 @@ a:hover {
   /* font-size: 1.813rem; */
   font-size: 1rem;
   font-weight: 400;
-  /* margin-bottom: 1rem; */
-  width: 70%;
+  margin-bottom: 1rem;
+  width: 60%;
 }
 
 .figure-text {
@@ -101,7 +102,7 @@ a:hover {
 
 .visual_label {
   /* rubriker till visualiseringar */
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -109,16 +110,13 @@ a:hover {
 .legend_label {
   font-size: 0.8rem;
   font-weight: 400;
-  
 }
 
-.visual_label--2 { 
+.visual_label--2 {
   /* x och y axel labels*/
-  font-size: 1.0rem;
+  font-size: 0.8rem;
   font-weight: 400;
-
 }
-
 
 .font-color--dark {
   color: var(--forest);
@@ -200,7 +198,11 @@ a:hover {
 .visual_3,
 .visual_4,
 .visual_5,
-.visual_6 {
+.visual_6,
+.visual_7,
+.visual_8,
+.visual_9,
+.visual_10 {
   margin-bottom: 1.5rem;
 }
 
@@ -216,7 +218,8 @@ a:hover {
   text-anchor: middle;
   fill: white;
 }
-.row-label, .col-label {
+.row-label,
+.col-label {
   font-size: 14px;
   font-weight: bold;
 }
@@ -224,6 +227,9 @@ a:hover {
   font-size: 12px;
 }
 
-/* .timbertruck-svg {
-  fill: green;
-} */
+.footer {
+  display: flex;
+  background-color: #003300;
+  color: white;
+  height: 10rem;
+}

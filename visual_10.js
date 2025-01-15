@@ -1,81 +1,6 @@
-// // Funktion för att generera diagramdata och storlek
-// function generateChartData() {
-//     return {
-//         percentage: 78.29,
-//         width: 300,
-//         height: 300,
-//         radius: 150
-//     };
-// }
-
-// // Skapa ett diagram med D3
-// function createPieChart() {
-//     const { percentage, width, height, radius } = generateChartData();
-
-//     // Beräkna vinkel för procentandelen
-//     const angle = (percentage / 100) * 2 * Math.PI;
-
-//     // Data för diagrammet
-//     const data = [
-//         { value: percentage, color: "#003300" }, // Grön del
-//         { value: 100 - percentage, color: "#eafffe" } // Grå del
-//     ];
-
-//     // Skapa SVG-elementet
-//     const svg = d3.select("div.visual_10")
-//         .append("svg")
-//         .attr("width", width)
-//         .attr("height", height+ 60)
-//         .append("g")
-//         .attr("transform", `translate(${width / 2}, ${height / 2 + 55})`);
-
-//     // Skapa en arc-generator
-//     const arc = d3.arc()
-//         .innerRadius(0) // Gör det till en donut
-//         .outerRadius(radius);
-
-//     // Skapa en pie-generator
-//     const pie = d3.pie()
-//         .value(d => d.value)
-//         .sort(null);
-
-//     // Lägg till arcs till SVG
-//     svg.selectAll("path")
-//         .data(pie(data))
-//         .enter()
-//         .append("path")
-//         .attr("d", arc)
-//         .attr("fill", d => d.data.color);
-
-//     // Lägg till procenttext i mitten av procentandelen
-//     svg.selectAll("text")
-//         .data(pie(data))
-//         .enter()
-//         .append("text")
-//         .attr("transform", d => `translate(${arc.centroid(d)})`)
-//         .attr("text-anchor", "middle")
-//         .attr("dy", ".35em")
-//         .style("font-size", "20px")
-//         .style("fill", "#eafffe")
-//         .text(d => d.data.value === percentage ? `${percentage.toFixed(2)}%` : '');
-
-//             // Lägg till en label för hela diagrammet
-//     d3.select("div.visual_10 svg")
-//     .append("text")
-//     .attr("x", width / 2)
-//     .attr("y", 30)
-//     .attr("text-anchor", "middle")
-//     .style("font-size", "16px")
-//     .style("fill", "#333")
-//     .text("Bränslekostnader");
-// }
-
-// // Anropa funktionen för att skapa diagrammet
-// createPieChart();
-
 const dataCo2 = [
-    { category: "Nuvarande", value: 117 * 900 * 3 },
-    { category: "Ikorni", value: (117 * 900 - 22860) * 3 }
+    { category: "Nuvarande", value: 117 * 900 * 3, color: "#99cfab" },
+    { category: "Ikorni", value: (117 * 900 - 22860) * 3,  color: "#003300" }
 ];
 
 function createVerticalBarChart() {
@@ -110,7 +35,8 @@ function createVerticalBarChart() {
         .attr("x", d => x(d.category))
         .attr("width", x.bandwidth())
         .attr("y", d => y(d.value))
-        .attr("height", d => height - y(d.value));
+        .attr("height", d => height - y(d.value))
+        .attr("fill", d => d.color); 
 
     // Lägg till x-axel (kategorier)
     svg.append("g")
@@ -128,7 +54,7 @@ function createVerticalBarChart() {
     svg.selectAll(".value-label")
         .data(dataCo2)
         .enter().append("text")
-        .attr("class", "value-label")
+        .attr("class", "visual_label--2")
         .attr("x", d => x(d.category) + x.bandwidth() / 2)
         .attr("y", d => y(d.value) - 5)
         .attr("text-anchor", "middle")
@@ -140,7 +66,15 @@ function createVerticalBarChart() {
         .attr("y", -20)
         .attr("text-anchor", "middle")
         .attr("class", "visual_label")
-        .text("Utsläpp av Co2 per timmerbil");
+        .text("Utsläpp av Co2 per timmerbil/år");
+
+        // Add figuretext 
+     d3.select("div.visual_10").append("div")
+     .attr("class", "figure-text")
+     .style("text-align", "left")
+     .style("margin-top", "20px")
+     .text("Figur 7: lägg till text här");
+
 }
 
 // Anropa funktionen för att skapa det stående stapeldiagrammet

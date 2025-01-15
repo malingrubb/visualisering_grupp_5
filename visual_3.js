@@ -39,7 +39,7 @@
   d3.select("div.visual_3").append("div")
   .attr("class", "figure-text")
   .style("text-align", "left")
-  .text("Figur 3: Antal timmerbilar från 2013 till 2023. Data hämtat från Trafikanalys.");
+  .text("Figur 2: Antal timmerbilar från 2013 till 2023. Data hämtat från Trafikanalys.");
 
 
       // Skapa linje-generator

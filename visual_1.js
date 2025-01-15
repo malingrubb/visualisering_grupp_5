@@ -221,8 +221,7 @@ function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
     container.append("div")
       .attr("class", "title")
       .style("text-align", "left")
-      .style("font-size", "24px")
-      .style("font-weight", "regular")
+      .attr("class", "visual_label")
       .style("margin-left", "1rem")
       .style("margin-bottom", "1rem")
       .text(title);
@@ -265,7 +264,7 @@ function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
   .attr("class", "figure-text")
   .style("text-align", "left")
   .style("margin-top", "20px")
-  .text("Figur 1: En visualisering av andelen skogsmark i Sverige 2023. Detta visar på den procentuella fördelningen på 68% skogsmark.");
+  .text("Figur 1: En visualisering av andelen skogsmark i Sverige 2023 baserad på data från SCB. Detta visar på den procentuella fördelningen på 68% skogsmark.");
   });
 }
 
@@ -293,4 +292,4 @@ const legendData1 = [
 ];
 
 // Create three maps with different forest height ratios
-colorSwedenMap(".map1", 0.32, legendData1, "Majoriteten av Sveriges yta består av skog."); // Original ratio
+colorSwedenMap(".map1", 0.32, legendData1, "Andelen skogsmark i Sverige 2023"); // Original ratio

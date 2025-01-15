@@ -23,14 +23,16 @@ function skapaLinjediagram(data) {
     const svg1 = d3.select(".visual_4").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
+        .style("margin-right", "5rem") // Lägg till extra avstånd med CSS
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
+
 
     // Create second SVG for "Medelkörsträcka"
     const svg2 = d3.select(".visual_4").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    .style("margin-top", "5rem") // Lägg till extra avstånd med CSS
+    .style("margin-top", "5rem") // Lägg till extra avstånd med CSS 
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -177,12 +179,12 @@ d3.select("div.visual_4").select("svg:nth-of-type(1)").append("text")
 .attr("x", 10)
 .attr("y", height + margin.bottom + 30)
 .style("text-anchor", "left")
-.text("Figur 4.1: Totalt antal körda mil för timmerbilar per år från 2013 till 2023, data hämtat från Trafikanalys.");
+.text("Figur 3.1: Totalt antal körda mil för timmerbilar per år från 2013 till 2023, data hämtat från Trafikanalys.");
 
 d3.select("div.visual_4").select("svg:nth-of-type(2)").append("text")
 .attr("class", "figure-text")
 .attr("x", 10)
 .attr("y", height + margin.bottom + 30)
 .style("text-anchor", "left")
-.text("Figur 4.2: Medelkörsträcka för timmerbilar från 2013 till 2023, data hämtat från Trafikanalys.");
+.text("Figur 3.2: Medelkörsträcka för timmerbilar från 2013 till 2023, data hämtat från Trafikanalys.");
 }
