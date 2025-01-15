@@ -27,14 +27,13 @@ function skapaLinjediagram(data) {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-
     // Create second SVG for "Medelkörsträcka"
     const svg2 = d3.select(".visual_4").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .style("margin-top", "5rem") // Lägg till extra avstånd med CSS 
-    .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .style("margin-top", "5rem") // Lägg till extra avstånd med CSS 
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Define x scale (År) - same for both graphs
     const x = d3.scaleLinear()
@@ -66,22 +65,18 @@ function skapaLinjediagram(data) {
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-  svg2.append("g")
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    svg2.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-// Add y-axes
-svg1.append("g")
-    .call(d3.axisLeft(y1).ticks(5).tickFormat(d => `${(d / 1e6).toFixed(0)} milj`)) // Format as millions
-    .style("font-size", "12px"); // Ändra storleken efter behov
+    // Add y-axes
+    svg1.append("g")
+        .call(d3.axisLeft(y1).ticks(5).tickFormat(d => `${(d / 1e6).toFixed(0)} milj`)) // Format as millions
+        .style("font-size", "12px"); // Ändra storleken efter behov
 
-
-svg2.append("g")
-    .call(d3.axisLeft(y2)
-    .ticks(6)
-    .tickFormat(d => `${d} mil`)) // Format tick labels
-    .style("font-size", "12px"); // Ändra storleken efter behov
-
+    svg2.append("g")
+        .call(d3.axisLeft(y2).ticks(6).tickFormat(d3.format(",.0f"))) // Format with commas and 2 decimals
+        .style("font-size", "12px"); // Ändra storleken efter behov
 
     // Add the first line (Antal körda mil)
     svg1.append("path")
@@ -111,34 +106,33 @@ svg1.selectAll(".dot1")
 
 svg1.selectAll(".text1")
 .data(data.filter(d => d.År === 2023))
-  .enter().append("text")
-  .attr("class", "text1")
-  .attr("x", d => x(d.År) + - 30) // Adjust position as needed
-  .attr("y", d => y1(d["Antal körda mil"]) - 15 ) // Adjust position as needed
-  .text(d => d["Antal körda mil"] + " mil")
-  .style("font-size", "12px")
-  .attr("fill", "#003300");
+.enter().append("text")
+.attr("class", "text1")
+.attr("x", d => x(d.År) - 30) // Adjust position as needed
+.attr("y", d => y1(d["Antal körda mil"]) - 15) // Adjust position as needed
+.text(d => `${(d["Antal körda mil"] / 1e6).toFixed(1)} milj`) // Format the number to show only the first 3 digits
+.style("font-size", "12px")
+.attr("fill", "#003300");
 
     // Highlight the year 2023 with a dot for the second line
-svg2.selectAll(".dot2")
-.data(data.filter(d => d.År === 2023))
-.enter().append("circle")
-.attr("class", "dot2")
-.attr("cx", d => x(d.År))
-.attr("cy", d => y2(d["Medelkörsträcka"]))
-.attr("r", 5)
-.attr("fill", "#99cfab");
+    svg2.selectAll(".dot2")
+        .data(data.filter(d => d.År === 2023))
+        .enter().append("circle")
+        .attr("class", "dot2")
+        .attr("cx", d => x(d.År))
+        .attr("cy", d => y2(d["Medelkörsträcka"]))
+        .attr("r", 5)
+        .attr("fill", "#99cfab");
 
-svg2.selectAll(".text2")
-  .data(data.filter(d => d.År === 2023))
-  .enter().append("text")
-  .attr("class", "text2")
-  .attr("x", d => x(d.År) + - 20) // Adjust position as needed
-  .attr("y", d => y2(d["Medelkörsträcka"]) - -20) // Adjust position as needed
-  .text(d => d["Medelkörsträcka"] + " mil")
-  .style("font-size", "12px")
-  .attr("fill", "#99cfab");
- 
+    svg2.selectAll(".text2")
+        .data(data.filter(d => d.År === 2023))
+        .enter().append("text")
+        .attr("class", "text2")
+        .attr("x", d => x(d.År) - 20) // Adjust position as needed
+        .attr("y", d => y2(d["Medelkörsträcka"]) + 20) // Adjust position as needed
+        .text(d => d3.format(",")(d["Medelkörsträcka"]) + " mil") // Format the number with commas
+        .style("font-size", "12px")
+        .attr("fill", "#99cfab");
 
     svg1.append("text")
         .attr("transform", "rotate(-90)")
@@ -148,14 +142,13 @@ svg2.selectAll(".text2")
         .attr("class", "visual_label--2")
         .text("Antal körda mil");
 
-
     svg2.append("text")
         .attr("transform", "rotate(-90)")
         .attr("x", -height / 2)
         .attr("y", -margin.left + 15)
         .attr("text-anchor", "middle")
         .attr("class", "visual_label--2")
-        .text("Medelkörsträcka");
+        .text("Medelkörsträcka (mil)");
 
     // Add titles to the graphs
     svg1.append("text")
@@ -173,18 +166,18 @@ svg2.selectAll(".text2")
         .style("font-weight", "regular")
         .text("Medelkörsträcka per timmerbil över tid");
 
-     // Add figure text under each graph
-d3.select("div.visual_4").select("svg:nth-of-type(1)").append("text")
-.attr("class", "figure-text")
-.attr("x", 10)
-.attr("y", height + margin.bottom + 30)
-.style("text-anchor", "left")
-.text("Figur 3.1: Totalt antal körda mil för timmerbilar per år från 2013 till 2023, data hämtat från Trafikanalys.");
+    // Add figure text under each graph
+    d3.select("div.visual_4").select("svg:nth-of-type(1)").append("text")
+        .attr("class", "figure-text")
+        .attr("x", 10)
+        .attr("y", height + margin.bottom + 30)
+        .style("text-anchor", "left")
+        .text("Figur 2.1: Totalt antal körda mil för timmerbilar per år från 2013 till 2023, data hämtat från Trafikanalys.");
 
-d3.select("div.visual_4").select("svg:nth-of-type(2)").append("text")
-.attr("class", "figure-text")
-.attr("x", 10)
-.attr("y", height + margin.bottom + 30)
-.style("text-anchor", "left")
-.text("Figur 3.2: Medelkörsträcka för timmerbilar från 2013 till 2023, data hämtat från Trafikanalys.");
+    d3.select("div.visual_4").select("svg:nth-of-type(2)").append("text")
+        .attr("class", "figure-text")
+        .attr("x", 10)
+        .attr("y", height + margin.bottom + 30)
+        .style("text-anchor", "left")
+        .text("Figur 2.2: Medelkörsträcka för timmerbilar från 2013 till 2023, data hämtat från Trafikanalys");
 }

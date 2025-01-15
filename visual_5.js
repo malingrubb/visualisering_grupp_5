@@ -22,7 +22,7 @@ d3.csv("/csv/data-och-statistik-klimat-vaxthusgaser-utslapp-fran-inrikes-transpo
   function createEnhancedStackedAreaPlot(data) {
     const bredd = 700;
     const höjd = 400;
-    const marginal = {top: 100, höger: 30, botten: 30, vänster: 100};
+    const marginal = {top: 100, höger: 30, botten: 30, vänster: 60};
   
     const svg = d3.select(".visual_5").append("svg")
       .attr("width", bredd + marginal.vänster + marginal.höger)
@@ -118,7 +118,7 @@ svg.selectAll(".line")
     // Add Legend
     const legendData = [
       { color: "#003300", label: "Tunga lastbilar över 3.5 ton" },
-      { color: " #99cfab", label: "Totalt utsläpp från alla vägtransporter" }
+      { color: " #99cfab", label: "Totalt utsläpp från alla inrikes vägtransporter" }
     ];
   
     const legend = svg.append("g")
@@ -148,7 +148,7 @@ svg.selectAll(".line")
   .attr("class", "figure-text")
   .style("text-align", "left")
   .style("margin-top", "20px")
-  .text("Figur 4: Utsläpp från olika inrikes transporter i Sverige. Data hämtat från Naturvårdsverket.");
+  .text("Figur 3: Utsläpp från olika inrikes transporter i Sverige. Data hämtat från Naturvårdsverket.");
 
   //title
   svg.append("text")
@@ -156,7 +156,7 @@ svg.selectAll(".line")
   .attr("y", 0 - (marginal.top / 2))
   .attr("text-anchor", "middle")
   .attr("class", "visual_label")
-  .text("Utsläpp av växthusgaser från vägtransporter i Sverige");
+  .text("Utsläpp av växthusgaser från inrikes vägtransporter i Sverige");
 
 
   }

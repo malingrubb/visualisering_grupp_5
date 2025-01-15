@@ -156,7 +156,7 @@ svg.selectAll()
      .attr("class", "figure-text")
      .style("text-align", "left")
      .style("margin-top", "20px")
-     .text("Figur 8: Datan är fiktiv men är baserad på hur vi anser att målgruppen resonerar kring dessa frågor. Skalan visar graden av nöjdhet med dagens mätning av timmer. Mycket missnöjd till mycket nöjd.");
+     .text("Figur 7: Datan är skapat med hjälp av ChatGPT men är baserad på hur vi anser att målgruppen resonerar kring dessa frågor. Skalan visar graden av nöjdhet med dagens mätning av timmer. Mycket missnöjd till mycket nöjd.");
 
 // Add axes
 svg.append("g")

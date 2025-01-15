@@ -78,7 +78,7 @@ svg.append("text")
    .attr("class", "figure-text")
    .style("text-align", "left")
    .style("margin-top", "20px")
-   .text("Figur 5: Antalet timmervändor per år i genomsnitt per timmerbil i Sverige. En jämförelse mellan dagens mätningsmetod och den nya mätmetoden Ikorni." );
+   .text("Figur 4: Antalet timmervändor per år i genomsnitt per timmerbil i Sverige. En jämförelse mellan dagens mätningsmetod och den nya mätmetoden Ikorni. Datan är baserad på statistik från Svepreg AB." );
 
 }
 

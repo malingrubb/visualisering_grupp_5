@@ -15,7 +15,7 @@
     function skapaLinjediagram2(data) {
       const bredd = 500;
       const höjd = 350;
-      const marginal = {top: 50, höger: 20, botten: 70, vänster: 40};
+      const marginal = {top: 50, höger: 20, botten: 70, vänster: 70};
     
       const svg = d3.select("div.visual_3").append("svg")
         .attr("width", bredd + marginal.vänster + marginal.höger)
@@ -39,7 +39,7 @@
   d3.select("div.visual_3").append("div")
   .attr("class", "figure-text")
   .style("text-align", "left")
-  .text("Figur 2: Antal timmerbilar från 2013 till 2023. Data hämtat från Trafikanalys.");
+  .text("Figur 1: Antal trafik registrerade timmerbilar i Sverige från 2013 till 2023. Data hämtat från Trafikanalys. ");
 
 
       // Skapa linje-generator
@@ -72,6 +72,15 @@
         .call(d3.axisLeft(y))
         .style("font-size", "12px"); // Ändra storleken efter behov
 
+        // Lägg till y-axel titel
+svg.append("text")
+.attr("transform", "rotate(-90)")
+.attr("y", 0 - marginal.vänster)
+.attr("x", 0 - (höjd / 2))
+.attr("dy", "1em")
+.style("text-anchor", "middle")
+.attr("class", "visual_label--2")
+.text("Antal timmerbilar ");
     
       // Lägg till titel
       svg.append("text")

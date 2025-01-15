@@ -7,7 +7,7 @@ function createHorizontalBarChart() {
     // Dimensioner och marginaler
     const margin = { top: 50, right: 70, bottom: 30, left: 130 };
     const width = 800 - margin.left - margin.right;
-    const height = 200 - margin.top - margin.bottom;
+    const height = 250 - margin.top - margin.bottom;
 
     // Skapa SVG-element
     const svg = d3.select("div.visual_9").append("svg")
@@ -73,7 +73,7 @@ function createHorizontalBarChart() {
      .attr("class", "figure-text")
      .style("text-align", "left")
      .style("margin-top", "20px")
-     .text("Figur 6: Dieselförbrukning per år och timmerbil. Källa: Svepreg AB.");
+     .text("Figur 5: Medelvärde på dieselförbrukning per år och timmerbil. Detta är baserat på data från Svepreg AB och är en ungefärlig uppskattning av genomsnittet.");
 
 }
 
