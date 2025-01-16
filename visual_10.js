@@ -83,7 +83,7 @@ function createVerticalBarChart() {
         .attr("class", "figure-text")
         .style("text-align", "left")
         .style("margin-top", "20px")
-        .text("Figur 6: Utsläpp av Co2 per timmerbil och år. Nuvarande utsläpp jämfört med utsläpp vid användning av Ikorni. Källa: Uträknad med data från Svepreg AB");
+        .text("Figur 6: Utsläpp av Co2 per timmerbil i genomsnitt per år. Nuvarande utsläpp jämfört med utsläpp vid användning av Ikorni. Källa: Uträknad med data från Svepreg AB");
 }
 
 // Anropa funktionen för att skapa det stående stapeldiagrammet
