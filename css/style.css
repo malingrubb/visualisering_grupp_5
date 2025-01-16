@@ -1,9 +1,10 @@
 :root {
   /* Färgpalett */
-  --forest: rgb(0, 51, 0);
+  --forest: #003300;
   --fog: #99cfab;
   /* --breeze: #d1f7e5; */
-  --breeze: #eafffe;
+  /* --breeze: #eafffe; */
+  --breeze: #f8fffb;
   --night_black: #000000;
   --light_the_way: #33ff99;
 }

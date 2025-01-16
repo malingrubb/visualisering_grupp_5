@@ -136,9 +136,13 @@ const yScale = d3.scaleBand()
     .range([height, 0])
     .padding(0.05);
 
-const colorScale = d3.scaleLinear()
+    const colorScale = d3.scaleLinear()
     .domain([1, 5])
     .range(["#99cfab", "#003300"]);
+
+    // const colorScale = d3.scaleLinear()
+    // .domain([1, 3, 5])
+    // .range(["#D73027", "#FDAE61", "#4575B4"]); // Red, orange, blue
 
 // Create heatmap rectangles
 svg.selectAll()

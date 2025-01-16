@@ -90,7 +90,7 @@ function skapaLinjediagram(data) {
     svg2.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#99cfab")
+        .attr("stroke", "#003300")
         .attr("stroke-width", 1.5)
         .attr("d", line2);
 
@@ -122,7 +122,7 @@ svg1.selectAll(".text1")
         .attr("cx", d => x(d.År))
         .attr("cy", d => y2(d["Medelkörsträcka"]))
         .attr("r", 5)
-        .attr("fill", "#99cfab");
+        .attr("fill", "#003300");
 
     svg2.selectAll(".text2")
         .data(data.filter(d => d.År === 2023))
@@ -132,7 +132,7 @@ svg1.selectAll(".text1")
         .attr("y", d => y2(d["Medelkörsträcka"]) + 20) // Adjust position as needed
         .text(d => d3.format(",")(d["Medelkörsträcka"]) + " mil") // Format the number with commas
         .style("font-size", "12px")
-        .attr("fill", "#99cfab");
+        .attr("fill", "#003300");
 
     svg1.append("text")
         .attr("transform", "rotate(-90)")
