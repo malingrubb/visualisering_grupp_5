@@ -5,7 +5,7 @@ const dataCo2 = [
 
 function createVerticalBarChart() {
     // Dimensioner och marginaler
-    const margin = { top: 50, right: 30, bottom: 70, left: 60 };
+    const margin = { top: 50, right: 30, bottom: 30, left: 60 };
     const width = 500 - margin.left - margin.right;
     const height = 600 - margin.top - margin.bottom;
 

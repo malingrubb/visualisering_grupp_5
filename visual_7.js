@@ -106,7 +106,7 @@
 ];
 
 // Define margins and dimensions
-const margin = { top: 50, right: 150, bottom: 50, left: 100 }; // Increased right margin for better legend spacing
+const margin = { top: 50, right: 150, bottom: 40, left: 100 }; // Increased right margin for better legend spacing
 const width = 700 - margin.left - margin.right;
 const height = 500 - margin.top - margin.bottom;
 
