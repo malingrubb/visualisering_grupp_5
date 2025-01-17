@@ -1,63 +1,4 @@
-// // Data
-// const data = [
-//     { person: "Intervju 1", fråga1: true, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 2", fråga1: false, fråga2: false, fråga3: true, fråga4: true },
-//     { person: "Intervju 3", fråga1: false, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 4", fråga1: true, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 5", fråga1: false, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 6", fråga1: true, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 7", fråga1: false, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 8", fråga1: false, fråga2: false, fråga3: true, fråga4: true },
-//     { person: "Intervju 9", fråga1: false, fråga2: true, fråga3: true, fråga4: true },
-//     { person: "Intervju 10", fråga1: true, fråga2: true, fråga3: true, fråga4: true }
-// ];
-
-// // Funktion för att skapa tabellen
-// function createTable(data) {
-//     // Välj div med class visual_7
-//     const container = d3.select(".visual_7");
-
-//     // Skapa en tabell i div:en
-//     const table = container.append("table").style("border-collapse", "collapse").style("margin", "20px auto");
-//     const header = table.append("thead").append("tr");
-
-//     // Kolumnnamn
-//     const columns = ["Intervju", "Fråga 1", "Fråga 2", "Fråga 3", "Fråga 4"];
-//     header.selectAll("th")
-//         .data(columns)
-//         .enter()
-//         .append("th")
-//         .text(d => d)
-//         .style("padding", "8px")
-//         .style("border", "1px solid #ddd")
-//         .style("background-color", "#f4f4f4")
-//         .style("text-align", "center");
-
-//     // Data-rader
-//     const tbody = table.append("tbody");
-//     const rows = tbody.selectAll("tr")
-//         .data(data)
-//         .enter()
-//         .append("tr");
-
-//     // Skapa celler
-//     rows.selectAll("td")
-//         .data(row => [row.person, row.fråga1, row.fråga2, row.fråga3, row.fråga4])
-//         .enter()
-//         .append("td")
-//         .text((d, i) => i === 0 ? d : "")
-//         .attr("class", d => typeof d === "boolean" ? (d ? "true" : "false") : null)
-//         .style("padding", "8px")
-//         .style("border", "1px solid #ddd")
-//         .style("text-align", "center")
-//         .style("background-color", d => d === true ? "green" : d === false ? "white" : null)
-//         .style("color", d => d === true ? "white" : "black");
-// }
-
-// // Kör funktionen
-// createTable(data);
-
-  // Define the data
+// Define the data
   const data = [
     { category: 'Bränsleförbrukning', interview: 'Person 1', value: 2 },
     { category: 'Bränsleförbrukning', interview: 'Person 2', value:4 },
@@ -77,36 +18,24 @@
     { category: 'Hållbart/miljö', interview: 'Person 4', value: 3 },
     { category: 'Hållbart/miljö', interview: 'Person 5', value: 1 },
     { category: 'Hållbart/miljö', interview: 'Person 6', value: 2 },
-    // { category: 'Förändring', interview: 'Person 1', value: 2 },
-    // { category: 'Förändring', interview: 'Person 2', value: 2 },
-    // { category: 'Förändring', interview: 'Person 3', value: 2 },
-    // { category: 'Förändring', interview: 'Person 4', value: 2 },
-    // { category: 'Förändring', interview: 'Person 5', value: 2 },
-    // { category: 'Förändring', interview: 'Person 6', value: 2 },
     { category: 'Kostnad', interview: 'Person 1', value: 3 },
     { category: 'Kostnad', interview: 'Person 2', value: 3 },
     { category: 'Kostnad', interview: 'Person 3', value: 2 },
     { category: 'Kostnad', interview: 'Person 4', value: 3 },
     { category: 'Kostnad', interview: 'Person 5', value: 1 },
     { category: 'Kostnad', interview: 'Person 6', value: 4 },
-    // { category: 'Innovation', interview: 'Person 1', value: 2 },
-    // { category: 'Innovation', interview: 'Person 2', value: 2 },
-    // { category: 'Innovation', interview: 'Person 3', value: 2 },
-    // { category: 'Innovation', interview: 'Person 4', value: 2 },
-    // { category: 'Innovation', interview: 'Person 5', value: 2 },
-    // { category: 'Innovation', interview: 'Person 6', value: 2 },
     { category: 'Dagens metod', interview: 'Person 1', value: 3 },
     { category: 'Dagens metod', interview: 'Person 2', value: 2 },
     { category: 'Dagens metod', interview: 'Person 3', value: 2 },
     { category: 'Dagens metod', interview: 'Person 4', value: 1 },
     { category: 'Dagens metod', interview: 'Person 5', value: 1 },
-    { category: 'Dagens metod', interview: 'Person 6', value: 2.5 },
+    { category: 'Dagens metod', interview: 'Person 6', value: 2 },
    
-    // Add more data for other categories and interviews
+
 ];
 
 // Define margins and dimensions
-const margin = { top: 50, right: 150, bottom: 40, left: 100 }; // Increased right margin for better legend spacing
+const margin = { top: 40, right: 150, bottom: 40, left: 100 }; // Increased right margin for better legend spacing
 const width = 700 - margin.left - margin.right;
 const height = 500 - margin.top - margin.bottom;
 
@@ -136,13 +65,13 @@ const yScale = d3.scaleBand()
     .range([height, 0])
     .padding(0.05);
 
-    const colorScale = d3.scaleLinear()
-    .domain([1, 5])
-    .range(["#99cfab", "#003300"]);
 
-    // const colorScale = d3.scaleLinear()
-    // .domain([1, 3, 5])
-    // .range(["#D73027", "#FDAE61", "#4575B4"]); // Red, orange, blue
+
+    const colorScale = d3.scaleLinear()
+    .domain([1,2,3,4, 5]) // 1 to 3 is green to grey, 3 to 5 is grey to orange
+    .range(["#003300", "#4D8156","#999999" , "rgb(191, 172, 77)", "#ffcc66"]) 
+  
+   
 
 // Create heatmap rectangles
 svg.selectAll()

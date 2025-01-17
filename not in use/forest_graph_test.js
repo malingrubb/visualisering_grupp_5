@@ -207,89 +207,89 @@
 
 // Visual_1
 
-function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
-  d3.xml("./svg/tree_frame_coloured.svg").then(svg => {
-    const svgNode = svg.documentElement;
-    const container = d3.select(containerId);
+// function colorSwedenMap(containerId, forestHeightRatio, legendData, title) {
+//   d3.xml("./svg/tree_frame_coloured.svg").then(svg => {
+//     const svgNode = svg.documentElement;
+//     const container = d3.select(containerId);
 
-    if (container.empty()) {
-      console.error(`Container ${containerId} not found`);
-      return;
-    }
+//     if (container.empty()) {
+//       console.error(`Container ${containerId} not found`);
+//       return;
+//     }
 
-    // Create the title container and append it to the main container
-    container.append("div")
-      .attr("class", "title")
-      .style("text-align", "left")
-      .attr("class", "visual_label")
-      .style("margin-left", "1rem")
-      .style("margin-bottom", "1rem")
-      .text(title);
+//     // Create the title container and append it to the main container
+//     container.append("div")
+//       .attr("class", "title")
+//       .style("text-align", "left")
+//       .attr("class", "visual_label")
+//       .style("margin-left", "1rem")
+//       .style("margin-bottom", "1rem")
+//       .text(title);
 
-    // Create the legend before appending the SVG
-    createLegend(containerId, legendData);
+//     // Create the legend before appending the SVG
+//     createLegend(containerId, legendData);
 
-    // Append the SVG node after the legend
-    container.node().append(svgNode);
+//     // Append the SVG node after the legend
+//     container.node().append(svgNode);
 
-    const svgHeight = 1052.3622; // Höjden på SVG:n
-    const svgWidth = 744.0945; // Bredden på SVG:n (you can adjust this value as needed)
-    const forestHeight = svgHeight * forestHeightRatio;
-    const otherHeight = svgHeight - forestHeight;
+//     const svgHeight = 1052.3622; // Höjden på SVG:n
+//     const svgWidth = 744.0945; // Bredden på SVG:n (you can adjust this value as needed)
+//     const forestHeight = svgHeight * forestHeightRatio;
+//     const otherHeight = svgHeight - forestHeight;
 
-    // Skapa en gradient
-    const defs = d3.select(svgNode).append("defs");
+//     // Skapa en gradient
+//     const defs = d3.select(svgNode).append("defs");
 
-    const gradient = defs.append("linearGradient")
-      .attr("id", `gradient-${containerId}`)
-      .attr("x1", "0%")
-      .attr("y1", "0%")
-      .attr("x2", "0%")
-      .attr("y2", "100%");
+//     const gradient = defs.append("linearGradient")
+//       .attr("id", `gradient-${containerId}`)
+//       .attr("x1", "0%")
+//       .attr("y1", "0%")
+//       .attr("x2", "0%")
+//       .attr("y2", "100%");
 
-    gradient.append("stop")
-      .attr("offset", `${forestHeight / svgHeight * 100}%`)
-      .attr("stop-color", "#99cfab"); // Färg för 32% av höjden
+//     gradient.append("stop")
+//       .attr("offset", `${forestHeight / svgHeight * 100}%`)
+//       .attr("stop-color", "#99cfab"); // Färg för 32% av höjden
 
-    gradient.append("stop")
-      .attr("offset", `${forestHeight / svgHeight * 100}%`)
-      .attr("stop-color", "#003300"); // Färg för 68% av höjden
+//     gradient.append("stop")
+//       .attr("offset", `${forestHeight / svgHeight * 100}%`)
+//       .attr("stop-color", "#003300"); // Färg för 68% av höjden
 
-    d3.select(svgNode).selectAll("path")
-      .attr("fill", `url(#gradient-${containerId})`);
+//     d3.select(svgNode).selectAll("path")
+//       .attr("fill", `url(#gradient-${containerId})`);
 
 
-      // Add figuretext 
-  d3.select("div.visual_1").append("div")
-  .attr("class", "figure-text")
-  .style("text-align", "left")
-  .style("margin-top", "20px")
-  .text("Figur 1: En visualisering av andelen skogsmark i Sverige 2023 baserad på data från SCB. Detta visar på den procentuella fördelningen på 68% skogsmark.");
-  });
-}
+//       // Add figuretext 
+//   d3.select("div.visual_1").append("div")
+//   .attr("class", "figure-text")
+//   .style("text-align", "left")
+//   .style("margin-top", "20px")
+//   .text("Figur 1: En visualisering av andelen skogsmark i Sverige 2023 baserad på data från SCB. Detta visar på den procentuella fördelningen på 68% skogsmark.");
+//   });
+// }
 
-function createLegend(containerId, legendData) {
-  const container = d3.select(containerId);
-  const legendContainer = container.append("div").attr("class", "legend");
+// function createLegend(containerId, legendData) {
+//   const container = d3.select(containerId);
+//   const legendContainer = container.append("div").attr("class", "legend");
 
-  legendData.forEach(d => {
-    const legendItem = legendContainer.append("div").attr("class", "legend-item");
-    legendItem.append("span")
-      .attr("class", "legend-color")
-      .style("background-color", d.color);
-    legendItem.append("span")
-      .attr("class", "legend-text")
-      .text(d.name);
+//   legendData.forEach(d => {
+//     const legendItem = legendContainer.append("div").attr("class", "legend-item");
+//     legendItem.append("span")
+//       .attr("class", "legend-color")
+//       .style("background-color", d.color);
+//     legendItem.append("span")
+//       .attr("class", "legend-text")
+//       .text(d.name);
 
       
-  });
-}
+//   });
+// }
 
-// Define legend data for each map
-const legendData1 = [
-  { name: "% Skogsmark", color: "#003300" },
-  { name: "% Övrig mark", color: "#99cfab" }
-];
+// // Define legend data for each map
+// const legendData1 = [
+//   { name: "% Skogsmark", color: "#003300" },
+//   { name: "% Övrig mark", color: "#99cfab" }
+// ];
 
-// Create three maps with different forest height ratios
-colorSwedenMap(".map1", 0.32, legendData1, "Andelen skogsmark i Sverige 2023"); // Original ratio
+// // Create three maps with different forest height ratios
+// colorSwedenMap(".map1", 0.32, legendData1, "Andelen skogsmark i Sverige 2023"); // Original ratio

@@ -8,7 +8,7 @@ const chartData = [
 function createChart() {
     // Funktion för att hämta dimensioner och marginaler
     function getDimensions() {
-        const margin = { top: 50, right: 20, bottom: 30, left: 60 };
+        const margin = { top: 40, right: 20, bottom: 30, left: 60 };
         const width = 450 - margin.left - margin.right;
         const height = 550 - margin.top - margin.bottom;
         return { margin, width, height };

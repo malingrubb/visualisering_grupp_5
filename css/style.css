@@ -72,14 +72,24 @@ a:hover {
 }
 
 .container {
-  margin-left: 10rem;
+  margin-left: 12rem;
   margin-top: 5rem;
   width: 80%;
 }
 
+.container-flex {
+  display: flex;
+  
+
+}
+
+.container-text {
+  margin-left: 6rem;
+  margin-top: 0.1rem;
+}
+
 .text-container {
-  width: 60%;
-  border-radius: 1rem;
+  width: 50%;
   color: white;
 }
 
@@ -108,6 +118,13 @@ a:hover {
   font-size: 1.953rem;
   /* font-weight: 100; */
   font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.introduction-text__header {
+  font-size: 1.953rem;
+  /* font-weight: 100; */
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
@@ -123,13 +140,22 @@ a:hover {
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 1rem;
-  width: 60%;
+  width: 25rem;
+  /* border: 1px solid green; */
+}
+
+.visual_8, .visual_10 {
+  width: 500px;
+}
+
+.visual_9 {
+  width: 850px;
 }
 
 .figure-text {
   font-style: italic;
   font-size: 85%;
-  width: 50%;
+  width: 30rem;
 }
 
 .visual_label {
@@ -204,11 +230,15 @@ a:hover {
 .visual_5,
 .visual_6,
 .visual_7,
-.visual_8,
-.visual_9,
 .visual_10 {
   margin-bottom: 1.5rem;
 }
+
+.visual_9, .visual_8 {
+  margin-bottom: 4rem;
+}
+
+
 
 .heatmap-cell {
   stroke: #ccc;
@@ -237,3 +267,6 @@ a:hover {
   color: white;
   height: 10rem;
 }
+
+
+

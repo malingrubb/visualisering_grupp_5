@@ -13,9 +13,9 @@
       console.log("Ett fel uppstod vid inläsning av CSV-filen:", error);
     });
     function skapaLinjediagram2(data) {
-      const bredd = 500;
+      const bredd = 600;
       const höjd = 350;
-      const marginal = {top: 50, höger: 20, botten: 70, vänster: 70};
+      const marginal = {top: 42, höger: 20, botten: 70, vänster: 70};
     
       const svg = d3.select("div.visual_3").append("svg")
         .attr("width", bredd + marginal.vänster + marginal.höger)

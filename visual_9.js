@@ -5,9 +5,9 @@ const dataDiesel = [
 
 function createHorizontalBarChart() {
     // Dimensioner och marginaler
-    const margin = { top: 50, right: 70, bottom: 30, left: 130 };
+    const margin = { top: 40, right: 70, bottom: 30, left: 130 };
     const width = 800 - margin.left - margin.right;
-    const height = 250 - margin.top - margin.bottom;
+    const height = 350 - margin.top - margin.bottom;
 
     // Skapa SVG-element
     const svg = d3.select("div.visual_9").append("svg")

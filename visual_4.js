@@ -15,7 +15,7 @@ d3.dsv(";", "/csv/bankebilar2010-2023.csv").then(function(data) {
 });
 
 function skapaLinjediagram(data) {
-    const margin = { top: 50, right: 50, bottom: 80, left: 90 };
+    const margin = { top: 40, right: 50, bottom: 80, left: 90 };
     const width = 700 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
